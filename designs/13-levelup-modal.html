@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quest Finance - Level Up</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#363530",
+                        "on-tertiary": "#00391e",
+                        "outline": "#938f9c",
+                        "on-tertiary-fixed-variant": "#00522e",
+                        "error-container": "#93000a",
+                        "on-primary": "#332074",
+                        "surface-tint": "#cbbeff",
+                        "on-background": "#e7e2db",
+                        "on-secondary-container": "#433300",
+                        "inverse-primary": "#6251a5",
+                        "shadow-black": "#000000",
+                        "on-surface-variant": "#cac4d2",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container-high": "#2b2a25",
+                        "secondary-fixed": "#ffdf92",
+                        "secondary-container": "#c29800",
+                        "card-surface": "#1f1e18",
+                        "on-tertiary-fixed": "#00210f",
+                        "error": "#ffb4ab",
+                        "on-surface": "#e7e2db",
+                        "surface-container": "#21201b",
+                        "tertiary-fixed-dim": "#56df92",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#5ce597",
+                        "secondary": "#efc137",
+                        "primary": "#d1c4ff",
+                        "paper": "#14130f",
+                        "on-secondary": "#3e2e00",
+                        "on-tertiary-container": "#004e2b",
+                        "surface-bright": "#3b3934",
+                        "primary-fixed": "#e7deff",
+                        "surface-variant": "#363530",
+                        "on-primary-fixed": "#1e015f",
+                        "deep-surface": "#0d0c09",
+                        "on-primary-fixed-variant": "#4a398c",
+                        "inverse-on-surface": "#32302c",
+                        "primary-container": "#b6a4ff",
+                        "surface-container-low": "#1d1c17",
+                        "loss-red": "#ff6a5c",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#cbbeff",
+                        "surface": "#14130f",
+                        "on-primary-container": "#473588",
+                        "on-secondary-fixed-variant": "#594400",
+                        "tertiary-fixed": "#75fcac",
+                        "tertiary-container": "#3ac87e",
+                        "surface-dim": "#14130f",
+                        "secondary-fixed-dim": "#efc137",
+                        "ink": "#f7f3e8",
+                        "background": "#14130f",
+                        "inverse-surface": "#e7e2db",
+                        "surface-container-lowest": "#0f0e0a",
+                        "outline-variant": "#484551"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "40px",
+                        "shadow-offset": "4px",
+                        "lg": "24px",
+                        "border-width": "3px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "mono-num": ["Space Grotesk"],
+                        "display": ["Space Grotesk"],
+                        "body-md": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "amount-lg": ["Space Grotesk"],
+                        "label-md": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "mono-num": ["15px", {"lineHeight": "18px", "fontWeight": "600"}],
+                        "display": ["40px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "amount-lg": ["36px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "700"}],
+                        "headline-lg": ["28px", {"lineHeight": "31px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pixel-corners {
+            image-rendering: pixelated;
+        }
+        .segmented-progress div {
+            height: 100%;
+            border-right: 2px solid #0d0c09;
+        }
+        .segmented-progress div:last-child {
+            border-right: none;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- HOME SCREEN (BACKGROUND LAYER) -->
+<div class="fixed inset-0 z-0">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-gutter py-4 w-full bg-background border-b-[3px] border-outline-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sticky top-0 z-10 px-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-primary-container border-[3px] border-black flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">person</span>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">QUEST FINANCE</h1>
+</div>
+<div class="px-md py-1 bg-surface-container border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center gap-sm">
+<span class="text-secondary font-bold">1,250 COINS</span>
+</div>
+</header>
+<!-- Mock Dashboard Content -->
+<main class="p-lg grid grid-cols-1 md:grid-cols-2 gap-lg opacity-50 pointer-events-none">
+<div class="bg-card-surface border-[3px] border-ink p-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">DAILY BALANCE</p>
+<p class="font-amount-lg text-amount-lg">$4,208.50</p>
+</div>
+<div class="bg-card-surface border-[3px] border-ink p-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">CURRENT QUEST</p>
+<p class="font-headline-md text-headline-md">Save $200 on Dining</p>
+<div class="mt-md h-4 w-full bg-deep-surface border-[2px] border-ink overflow-hidden">
+<div class="h-full bg-tertiary-container w-3/4"></div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface-container-low px-2 pb-safe border-t-[3px] border-outline-variant shadow-[0px_-4px_0px_0px_rgba(0,0,0,1)]">
+<div class="flex flex-col items-center justify-center text-secondary-container font-bold border-[2px] border-secondary-container p-1 shadow-[2px_2px_0px_0px_rgba(0,238,252,0.3)]">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px]">HOME</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">swords</span>
+<span class="text-[10px]">BATTLES</span>
+</div>
+<div class="w-14 h-14 bg-secondary border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -mt-10 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary font-bold">add</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px]">LEDGER</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px]">HERO</span>
+</div>
+</nav>
+</div>
+<!-- MODAL OVERLAY (THE VICTORY MODAL) -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-md">
+<!-- Victory Card Container -->
+<div class="relative w-full max-w-lg bg-[#fffdf7] border-[3px] border-[#14130f] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-lg flex flex-col items-center overflow-visible">
+<!-- Confetti/Starburst Header -->
+<div class="absolute -top-16 w-48 h-48 pointer-events-none animate-float">
+<img alt="Pixel-style colorful confetti and starburst effects, exploding outwards with vibrant primary colors and blocky aesthetic to celebrate a level up achievement in a retro arcade interface." class="w-full h-full object-contain pixel-corners" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI7Qh7BfOe_29UtLdsIR8psRq6tp12HqhVaOAWgb7LtK2lMIumAw_LCjoCwOzpr8Gzsu7TU_hFkM4eV2q5nTTnMgDDpxCvKTyzbQQJG35uT4HbTA1wnBjVyQTUBZB4yqTRqphB0hVtUKah2V9-AjhrZcL7HdXhkhEpc9H0LGZqc6XUzFupfele_N9OxFlyzxPB0xTsU87-jobT42YvTdCURzeU4nPEM4g1hP_8Yn78YDpOddIgj2_j6rAQMUUWIY7n0-rJjvWCW-o"/>
+</div>
+<!-- Content Start -->
+<div class="mt-lg w-full text-center space-y-md">
+<!-- Headline -->
+<h2 class="font-display text-display text-[#14130f] tracking-tighter leading-none mb-sm">LEVEL UP!</h2>
+<!-- Level Indicator -->
+<div class="inline-block px-md py-1 bg-primary text-on-primary border-[3px] border-black font-mono-num text-headline-md italic mb-md">
+                    LVL 12 → LVL 13
+                </div>
+<!-- XP Bar (Neo-Brutalist segmented) -->
+<div class="w-full h-8 bg-deep-surface border-[3px] border-black flex segmented-progress">
+<div class="flex-1 bg-[#ffc01e]"></div>
+<div class="flex-1 bg-[#ffc01e]"></div>
+<div class="flex-1 bg-[#ffc01e]"></div>
+<div class="flex-1 bg-[#ffc01e]"></div>
+<div class="flex-1 bg-[#ffc01e]"></div>
+<div class="flex-1 bg-[#ffc01e]"></div>
+<div class="flex-1 bg-[#ffc01e]"></div>
+<div class="flex-1 bg-[#ffc01e]"></div>
+</div>
+<!-- Rewards Section -->
+<div class="pt-md border-t-[1px] border-black/10">
+<p class="font-label-md text-label-md text-[#14130f]/60 mb-md uppercase tracking-widest">YOU EARNED</p>
+<div class="flex items-center justify-center gap-md mb-lg">
+<img alt="A large, shiny pixel art gold coin with a star symbol in the center, designed in a high-contrast 16-bit arcade style with clean yellow and orange shading, suitable for a financial gamification reward." class="w-16 h-16 pixel-corners animate-bounce" src="https://lh3.googleusercontent.com/aida/AP1WRLsGtNvP848GwLjrP3pLw5t8f4FB2_ZlfGN65u3TRVytV8PlsL6kxwLwp8vqonlfPwAW5OYAnJdmJv8hKI-_AxR9QxcpI2wejWYo_V2B1gU5trtaD9mea6Ltzbxy0TPhmcSVhehrZfp-QSE-Bqx3HMeg15lrBujNhVSKTCoAQ0s44mX1dIPVsLdBtwXyPWgrfM66SI2GsqhCotgAmuYlcstChO3OP9emoxPGRSTuTR9r_CcRjVixn9oYLJE"/>
+<span class="font-mono-num text-amount-lg text-[#14130f] tabular-nums">+250 COINS</span>
+</div>
+</div>
+<!-- Badge Section -->
+<div class="bg-surface-container-low border-[3px] border-dashed border-black/30 p-md flex flex-col items-center">
+<p class="font-label-md text-label-md text-[#14130f] mb-sm uppercase">NEW BADGE: BUDGET MASTER</p>
+<div class="w-32 h-32">
+<img alt="A chunky pixel art achievement badge featuring a gold shield, a dollar sign coin, and the text BUDGET MASTER. The style is classic pixel arcade, with thick outlines and bold yellow and brown hues." class="w-full h-full object-contain pixel-corners" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2k16_mhy9gcc6u9uvD1T1eVc3ze1lchyrPKbTbZ7QsjHPkrFIIPOu7KfLGd1Cch8JUHmULV501gEiL9WRNWXPL74pYf0PFm6B7TkO0GLcsizxLqMZgwlNL9CKyg_YJwUoKUrRqBHbfwIUjNWTqJTsp3SOyizkqKhbaLy7mIOSWYj6WqnzO_u9BfA-x2x_gAzn3amVvOFM5-UEEJqiYSxZzpuPqGR-tdEE82cp5X2kbo6LyJXMS6GDLWf9df_Kmxua4_kP-Y-Ma-c"/>
+</div>
+</div>
+<!-- Action Button -->
+<button class="group relative w-full mt-lg transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">
+<div class="w-full bg-[#ffc01e] border-[3px] border-[#14130f] py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center gap-sm group-active:shadow-none">
+<span class="material-symbols-outlined font-bold text-[#14130f]">celebration</span>
+<span class="font-display text-headline-md text-[#14130f]">CLAIM REWARD</span>
+</div>
+</button>
+<p class="font-label-md text-label-md text-[#14130f]/40 pt-md italic uppercase">Tap anywhere to return to Dashboard</p>
+</div>
+</div>
+</div>
+<script>
+        // Micro-interaction for clicking the claim button
+        document.querySelector('button').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const btn = this.querySelector('div');
+            btn.innerHTML = 'REWARD COLLECTED!';
+            setTimeout(() => {
+                document.querySelector('.fixed.inset-0.z-\\[100\\]').style.opacity = '0';
+                setTimeout(() => {
+                    document.querySelector('.fixed.inset-0.z-\\[100\\]').style.display = 'none';
+                    document.querySelector('.fixed.inset-0.z-0').classList.remove('opacity-50', 'pointer-events-none');
+                }, 300);
+            }, 500);
+        });
+
+        // Close modal when clicking background
+        document.querySelector('.fixed.inset-0.z-\\[100\\]').addEventListener('click', function() {
+            this.style.opacity = '0';
+            setTimeout(() => {
+                this.style.display = 'none';
+            }, 300);
+        });
+    </script>
+</body></html>

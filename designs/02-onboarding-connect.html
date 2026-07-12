@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coinquest Onboarding - Connect Your Treasury</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#332074",
+                        "on-secondary": "#3e2e00",
+                        "surface-container-low": "#1d1c17",
+                        "outline-variant": "#484551",
+                        "inverse-primary": "#6251a5",
+                        "on-tertiary-fixed": "#00210f",
+                        "surface-tint": "#cbbeff",
+                        "surface": "#14130f",
+                        "on-primary-container": "#473588",
+                        "secondary": "#efc137",
+                        "on-tertiary-fixed-variant": "#00522e",
+                        "ink": "#f7f3e8",
+                        "primary-fixed-dim": "#cbbeff",
+                        "tertiary-fixed-dim": "#56df92",
+                        "primary": "#d1c4ff",
+                        "outline": "#14130f",
+                        "on-tertiary-container": "#004e2b",
+                        "on-primary-fixed": "#1e015f",
+                        "on-secondary-fixed-variant": "#594400",
+                        "surface-container": "#21201b",
+                        "inverse-surface": "#e7e2db",
+                        "error": "#ffb4ab",
+                        "on-background": "#e7e2db",
+                        "secondary-container": "#c29800",
+                        "loss-red": "#ff6a5c",
+                        "on-tertiary": "#00391e",
+                        "surface-bright": "#3b3934",
+                        "error-container": "#93000a",
+                        "deep-surface": "#0d0c09",
+                        "surface-variant": "#363530",
+                        "on-secondary-fixed": "#241a00",
+                        "on-error": "#690005",
+                        "tertiary": "#5ce597",
+                        "inverse-on-surface": "#32302c",
+                        "secondary-fixed-dim": "#efc137",
+                        "surface-container-lowest": "#0f0e0a",
+                        "on-primary-fixed-variant": "#4a398c",
+                        "on-surface-variant": "#cac4d2",
+                        "surface-dim": "#14130f",
+                        "card-surface": "#1f1e18",
+                        "surface-container-high": "#2b2a25",
+                        "tertiary-container": "#3ac87e",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#433300",
+                        "tertiary-fixed": "#75fcac",
+                        "surface-container-highest": "#363530",
+                        "shadow-black": "#000000",
+                        "primary-fixed": "#e7deff",
+                        "primary-container": "#b6a4ff",
+                        "paper": "#fffdf7",
+                        "on-surface": "#14130f",
+                        "secondary-fixed": "#ffdf92",
+                        "background": "#fffdf7",
+                        "brand-violet": "#5b3df0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "border-width": "3px",
+                        "shadow-offset": "4px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "label-md": ["Space Grotesk"],
+                        "body-md": ["Space Grotesk"],
+                        "mono-num": ["Space Grotesk"],
+                        "display": ["Space Grotesk"],
+                        "amount-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "headline-lg": ["28px", {"lineHeight": "31px", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "mono-num": ["15px", {"lineHeight": "18px", "fontWeight": "600"}],
+                        "display": ["40px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "amount-lg": ["36px", {"lineHeight": "36px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #fffdf7;
+            color: #14130f;
+        }
+        .neo-shadow {
+            box-shadow: 4px 4px 0px 0px #000000;
+        }
+        .neo-button-interaction:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px 0px #000000;
+        }
+        .pixel-border {
+            border: 3px solid #14130f;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col p-0 m-0 overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full bg-paper border-b-[3px] border-outline px-lg py-sm flex justify-between items-center neo-shadow">
+<div class="flex items-center gap-sm">
+<span class="font-headline-md text-headline-md-mobile text-on-surface tracking-tighter">LEVEL 1</span>
+</div>
+<div class="flex items-center gap-sm bg-secondary border-[3px] border-outline px-sm py-1 neo-shadow">
+<img alt="Gold Sparkle Coin" class="w-6 h-6 object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLsGtNvP848GwLjrP3pLw5t8f4FB2_ZlfGN65u3TRVytV8PlsL6kxwLwp8vqonlfPwAW5OYAnJdmJv8hKI-_AxR9QxcpI2wejWYo_V2B1gU5trtaD9mea6Ltzbxy0TPhmcSVhehrZfp-QSE-Bqx3HMeg15lrBujNhVSKTCoAQ0s44mX1dIPVsLdBtwXyPWgrfM66SI2GsqhCotgAmuYlcstChO3OP9emoxPGRSTuTR9r_CcRjVixn9oYLJE"/>
+<span class="font-label-md text-label-md text-on-surface uppercase tracking-widest">0 COINS</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col px-lg py-xl max-w-md mx-auto w-full gap-lg pb-32">
+<!-- Header Section -->
+<section class="space-y-sm">
+<h1 class="font-display text-display text-on-surface leading-none uppercase">
+                CONNECT YOUR <span class="text-brand-violet">TREASURY</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface opacity-80">
+                Coinquest reads your bank alerts so you never log by hand.
+            </p>
+</section>
+<!-- Connectivity Options Grid -->
+<section class="flex flex-col gap-md">
+<!-- Option 1: Android SMS -->
+<div class="bg-white pixel-border neo-shadow p-md flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">BANK SMS (Android)</h3>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider opacity-60">Instant India-Wide Coverage</p>
+</div>
+<span class="material-symbols-outlined text-4xl text-on-surface">ad_units</span>
+</div>
+<button class="w-full bg-brand-violet text-white font-headline-md py-sm pixel-border neo-shadow neo-button-interaction uppercase">
+                    CONNECT
+                </button>
+</div>
+<!-- Option 2: Gmail Receipts -->
+<div class="bg-white pixel-border neo-shadow p-md flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">EMAIL RECEIPTS (Gmail)</h3>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider opacity-60">Auto-Fetch Statements</p>
+</div>
+<span class="material-symbols-outlined text-4xl text-on-surface">mail</span>
+</div>
+<button class="w-full bg-brand-violet text-white font-headline-md py-sm pixel-border neo-shadow neo-button-interaction uppercase">
+                    CONNECT
+                </button>
+</div>
+<!-- Option 3: UPI/Bank (Coming Soon) -->
+<div class="bg-surface-variant/20 pixel-border neo-shadow p-md flex flex-col gap-md grayscale">
+<div class="flex justify-between items-start opacity-40">
+<div class="space-y-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">UPI / BANK (COMING SOON)</h3>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Direct API Connection</p>
+</div>
+<span class="material-symbols-outlined text-4xl text-on-surface">account_balance</span>
+</div>
+<button class="w-full bg-outline/20 text-on-surface/40 font-headline-md py-sm pixel-border uppercase cursor-not-allowed" disabled="">
+                    UNAVAILABLE
+                </button>
+</div>
+</section>
+<!-- Privacy Shield Card -->
+<section class="bg-paper pixel-border p-md flex gap-md items-center">
+<div class="bg-tertiary-container pixel-border p-2">
+<span class="material-symbols-outlined text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<p class="font-body-md text-xs font-bold leading-tight uppercase">
+                Read-only. Your data stays on your device. We never move money.
+            </p>
+</section>
+</main>
+<!-- Sticky Footer -->
+<footer class="fixed bottom-0 left-0 w-full p-lg bg-paper border-t-[3px] border-outline space-y-md z-40">
+<button class="w-full bg-brand-violet text-white font-headline-lg text-headline-lg-mobile py-md pixel-border neo-shadow neo-button-interaction uppercase tracking-tight">
+            CONTINUE
+        </button>
+<button class="w-full font-label-md text-label-md text-on-surface uppercase tracking-widest underline decoration-2 underline-offset-4 active:text-brand-violet transition-colors">
+            Skip for now
+        </button>
+</footer>
+<!-- Atmosphere: Block Cursor and Grid Lines -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[-1]" style="background-image: radial-gradient(#14130f 1px, transparent 1px); background-size: 24px 24px;"></div>
+<script>
+        // Micro-interaction: Mimic arcade button sounds or haptics on press
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (window.navigator.vibrate) {
+                    window.navigator.vibrate(15);
+                }
+            });
+        });
+
+        // Simple console-like logging for "Arcade" immersion
+        console.log("%c COINQUEST V1.0 - TREASURY INITIALIZED ", "background: #5b3df0; color: #fff; font-weight: bold; padding: 4px;");
+    </script>
+</body></html>

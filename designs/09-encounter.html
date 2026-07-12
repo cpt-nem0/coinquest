@@ -1,0 +1,272 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Encounter - Wild Expense</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#261900",
+                        "primary-container": "#ffc01e",
+                        "on-surface": "#1b1b1c",
+                        "on-secondary-fixed-variant": "#6e3900",
+                        "surface-dim": "#dcd9d9",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#2f1500",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#201c02",
+                        "tertiary": "#665f3d",
+                        "on-surface-variant": "#504533",
+                        "on-secondary": "#ffffff",
+                        "outline": "#827660",
+                        "inverse-surface": "#303030",
+                        "surface-tint": "#7a5900",
+                        "surface-variant": "#e5e2e1",
+                        "secondary-container": "#fe932c",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-highest": "#e5e2e1",
+                        "tertiary-container": "#d4caa0",
+                        "primary": "#7a5900",
+                        "on-tertiary-container": "#5c5534",
+                        "on-primary-fixed-variant": "#5c4300",
+                        "surface-container-high": "#eae7e7",
+                        "surface-container": "#f0eded",
+                        "on-tertiary-fixed-variant": "#4d4727",
+                        "on-primary-container": "#6e5000",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-bright": "#fcf9f8",
+                        "surface": "#fcf9f8",
+                        "on-secondary-container": "#663500",
+                        "secondary-fixed-dim": "#ffb77d",
+                        "secondary-fixed": "#ffdcc3",
+                        "background": "#fcf9f8",
+                        "secondary": "#904d00",
+                        "inverse-primary": "#fbbc18",
+                        "primary-fixed-dim": "#fbbc18",
+                        "outline-variant": "#d4c5ac",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#d1c79d",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1b1b1c",
+                        "tertiary-fixed": "#ede3b8",
+                        "primary-fixed": "#ffdea1",
+                        "neo-violet": "#5b3df0",
+                        "neo-black": "#14130f",
+                        "neo-green": "#22c55e",
+                        "neo-red": "#ef4444",
+                        "neo-gold": "#fbbf24",
+                        "neo-parchment": "#fffdf7"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "pixel-unit": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "container-max": "1200px"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Space Grotesk"],
+                        "body-md": ["JetBrains Mono"],
+                        "body-lg": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-xl": ["Space Grotesk"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "700"}],
+                        "headline-xl": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #fffdf7; /* neo-parchment */
+            font-family: 'Space Grotesk', sans-serif;
+            color: #14130f;
+        }
+        .neo-border {
+            border: 3px solid #14130f;
+        }
+        .neo-shadow {
+            box-shadow: 4px 4px 0px 0px #14130f;
+        }
+        .neo-shadow-active:active {
+            box-shadow: 0px 0px 0px 0px #14130f;
+            transform: translate(2px, 2px);
+        }
+        .tabular {
+            font-variant-numeric: tabular-nums;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Discrete Progress Bar Effect */
+        .progress-block {
+            width: 12px;
+            height: 24px;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-24 overflow-x-hidden">
+<!-- Top App Bar (From Shared Components) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-surface-container-lowest border-[3px] border-on-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 border-2 border-on-surface bg-neo-gold flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A detailed pixel art profile avatar of a hero wearing a golden helmet and red cape, stylized in 16-bit retro RPG aesthetic with thick outlines and vibrant colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP4wrrGBlgXDhragFUxMsHhM_DW0y-eCud3jmOBdbva0hg2q0CJzWeKZaxPBVxj5dzb-ZrFB0lS-_sJ1bynaul17XNNGaIoQRbXpbX4pV2iUBTDAHo4IiIDldDjiB_Ojl6Eg_nG_LyAAqG5QiUgdHdmvrjFj7zfsQoTPqtsQp3Tfj4Hs_rnW0OL_4k4zTg9TB-IxxqqI083mN47GQ_qtinRACkV7w9CUnPYyfaMpAs0cvwrpPmn72o3ZY3EHT-T_b8HvXtW1sJxMo">
+</div>
+<span class="font-body-md text-body-md uppercase tracking-tighter text-primary font-bold">LVL 42 • ₹12,450</span>
+</div>
+<button class="hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+<span class="material-symbols-outlined text-primary text-3xl">settings</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 px-4 max-w-md mx-auto">
+<!-- Arcade Banner -->
+<div class="w-full bg-neo-black p-4 mb-6 neo-shadow">
+<h1 class="text-white font-headline-lg-mobile text-center tracking-widest italic">
+                A WILD EXPENSE APPEARED!
+            </h1>
+</div>
+<!-- Hero Section: Encounter Sprite -->
+<div class="flex justify-center mb-8 relative">
+<!-- Background Dithering Pattern (Simulated) -->
+
+<div class="w-48 h-48 animate-bounce" style="animation-duration: 2s; transform: translateY(-7.55911px);">
+<img class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAwJi4DxWTUOzHkzIJ7d9xjE2w6gG5pVfhHWOooqaxK36A4a6WlCsWKjUh3Twf3hczWXcYS8cT6ZNWAKdRPzqBVaqlTh9AWRV1p7H5hA2N-qe-HRXqE3-o9UYyXJdzpY3xxeqmMmhkijYVQsmIabmQS7xdFxeeNhgbyCz45pQ3mmbHxogVjBmn3Mc2PcsPaeeQploI39j_nNXShUaxXXvpTttuzbIOdy5OZhU5MZaPOesv-v2Wxk6Fvcd1mxG3Ux6tKiUOXvB5D8Y">
+</div>
+</div>
+<!-- Transaction Card (The Enemy Box) -->
+<div class="neo-border bg-white p-6 neo-shadow mb-8 relative">
+<div class="absolute -top-4 -left-1 bg-neo-gold px-2 py-1 neo-border font-bold text-xs">NEW ALERT</div>
+<div class="mb-4">
+<h2 class="font-headline-xl uppercase leading-none mb-1">SWIGGY</h2>
+<p class="font-body-md text-on-surface-variant">Today 8:42 PM · via SMS</p>
+</div>
+<div class="border-t-2 border-on-surface border-dashed my-4"></div>
+<div class="flex justify-between items-baseline">
+<span class="font-body-lg uppercase font-bold text-on-surface-variant">COST</span>
+<span class="font-headline-xl text-neo-red tabular">−₹487</span>
+</div>
+</div>
+<!-- Interactive Interaction: Worth It? -->
+<section class="mb-10">
+<h3 class="font-headline-lg-mobile text-center mb-4 uppercase">WORTH IT?</h3>
+<div class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center justify-center p-3 neo-border bg-neo-green neo-shadow neo-shadow-active transition-all group">
+<span class="text-2xl mb-1 group-active:scale-90">😋</span>
+<span class="font-label-sm uppercase">WORTH IT</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 neo-border bg-white neo-shadow neo-shadow-active transition-all group">
+<span class="text-2xl mb-1 group-active:scale-90">😐</span>
+<span class="font-label-sm uppercase">MEH</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 neo-border bg-neo-red neo-shadow neo-shadow-active transition-all group">
+<span class="text-2xl mb-1 group-active:scale-90">😩</span>
+<span class="font-label-sm uppercase">REGRET</span>
+</button>
+</div>
+</section>
+<!-- Category Picker -->
+<section class="mb-10">
+<div class="flex justify-between items-center mb-3">
+<h4 class="font-label-sm uppercase text-on-surface-variant">Category</h4>
+<span class="text-xs font-mono">SELECT ONE</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 neo-border bg-neo-gold text-neo-black font-bold text-xs uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Feasts</button>
+<button class="px-4 py-2 neo-border bg-white text-neo-black font-bold text-xs uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Loot</button>
+<button class="px-4 py-2 neo-border bg-white text-neo-black font-bold text-xs uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Travel</button>
+<button class="px-4 py-2 neo-border bg-white text-neo-black font-bold text-xs uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Supplies</button>
+<button class="px-4 py-2 neo-border bg-white text-neo-black font-bold text-xs uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Bills</button>
+</div>
+</section>
+<!-- Footer / Call to Action -->
+<div class="text-center mb-10">
+<p class="font-body-md text-on-surface-variant flex items-center justify-center gap-2 mb-6">
+                Reviewing earns +20 <img class="w-5 h-5 inline" src="https://lh3.googleusercontent.com/aida/AP1WRLslVLK4BBu4oCReAAAtyGYoaVh5FYNUimdypUFlo4zmOROoe7mWfp8GmXBna89wTE9bkxCs5EZ_woQ8Ke0hwL11iX-VhIPbSq78IKkVMMDXIDuDQ1fTlxqNKnTvLndZJwPWE-qRhyARPPujcKZSDjZEzBJxxtLmLFSSUN60hZdtECTvyOokkvEGx4_SKpixLfzJwR8yhy0kytHgFpIv7n-a3YKY7kKF2yAcq7ElarEFCNLBioH-O7SPxg"> coins
+            </p>
+<button class="w-full py-5 neo-border bg-neo-violet text-white font-headline-lg-mobile neo-shadow neo-shadow-active uppercase tracking-widest mb-4">
+                SAVE
+            </button>
+<button class="font-label-sm text-on-surface-variant underline uppercase tracking-tighter hover:text-neo-black">
+                SKIP ENCOUNTER
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar (From Shared Components) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe bg-surface-container-highest h-20 border-t-[3px] border-on-surface shadow-[0px_-4px_0px_0px_rgba(0,0,0,1)]">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm uppercase">HOME</span>
+</a>
+<!-- Battles -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">swords</span>
+<span class="font-label-sm text-label-sm uppercase">BATTLES</span>
+</a>
+<!-- Raised Center Button (ACTIVE) -->
+<div class="relative -top-4">
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container border-[3px] border-on-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-3 active:translate-y-[2px] transition-transform">
+<span class="material-symbols-outlined text-4xl font-bold">add</span>
+</button>
+</div>
+<!-- Ledger -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm uppercase">LEDGER</span>
+</a>
+<!-- Hero -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm uppercase">HERO</span>
+</a>
+</nav>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Subtle tactile haptic simulation if available
+                if (window.navigator.vibrate) {
+                    window.navigator.vibrate(10);
+                }
+            });
+        });
+
+        // Simple floating animation for the coin hero
+        const hero = document.querySelector('.animate-bounce');
+        if (hero) {
+            let angle = 0;
+            setInterval(() => {
+                angle += 0.05;
+                const y = Math.sin(angle) * 10;
+                hero.style.transform = `translateY(${y}px)`;
+            }, 16);
+        }
+    </script>
+
+
+</body></html>

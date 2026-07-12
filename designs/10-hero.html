@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HERO STATS - character Sheet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..900&family=Space+Grotesk:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#303030",
+                    "surface-container-low": "#f6f3f2",
+                    "on-surface-variant": "#504533",
+                    "surface-variant": "#e5e2e1",
+                    "surface": "#fcf9f8",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#6e3900",
+                    "on-tertiary-fixed-variant": "#4d4727",
+                    "outline-variant": "#d4c5ac",
+                    "on-primary-fixed": "#261900",
+                    "surface-tint": "#7a5900",
+                    "surface-container-high": "#eae7e7",
+                    "error-container": "#ffdad6",
+                    "background": "#fffdf7",
+                    "tertiary": "#665f3d",
+                    "surface-dim": "#dcd9d9",
+                    "primary-fixed": "#ffdea1",
+                    "on-tertiary-container": "#5c5534",
+                    "on-primary-container": "#6e5000",
+                    "on-surface": "#14130f",
+                    "inverse-primary": "#fbbc18",
+                    "tertiary-container": "#d4caa0",
+                    "surface-bright": "#fcf9f8",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f3f0ef",
+                    "secondary-fixed": "#ffdcc3",
+                    "tertiary-fixed-dim": "#d1c79d",
+                    "primary": "#7a5900",
+                    "tertiary-fixed": "#ede3b8",
+                    "outline": "#14130f",
+                    "on-primary-fixed-variant": "#5c4300",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#663500",
+                    "secondary-fixed-dim": "#ffb77d",
+                    "secondary": "#904d00",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#2f1500",
+                    "surface-container-highest": "#e5e2e1",
+                    "primary-container": "#ffc01e",
+                    "surface-container": "#f0eded",
+                    "secondary-container": "#fe932c",
+                    "on-tertiary-fixed": "#201c02",
+                    "primary-fixed-dim": "#fbbc18",
+                    "on-primary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#14130f",
+                    "brand-violet": "#5b3df0",
+                    "money-green": "#12a35a"
+            },
+            "borderRadius": {
+                    "none": "0",
+                    "DEFAULT": "0",
+                    "lg": "0",
+                    "xl": "0",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "container-max": "1200px",
+                    "pixel-unit": "4px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["JetBrains Mono"],
+                    "body-lg": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Space Grotesk"],
+                    "body-md": ["JetBrains Mono"],
+                    "headline-xl": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pixel-border {
+            border: 3px solid #14130f;
+        }
+        .hard-shadow {
+            box-shadow: 4px 4px 0px 0px #14130f;
+        }
+        .hard-shadow-active {
+            box-shadow: 0px 0px 0px 0px #14130f;
+            transform: translate(2px, 2px);
+        }
+        .segmented-bar-segment {
+            width: calc(100% / 10 - 2px);
+            height: 100%;
+            border-right: 2px solid #14130f;
+        }
+        .segmented-bar-segment:last-child {
+            border-right: none;
+        }
+        body {
+            background-color: #fffdf7;
+            color: #14130f;
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- Top AppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-surface border-b-[3px] border-outline hard-shadow">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 pixel-border bg-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A chunky 16-bit pixel art avatar of a tiny blue bird warrior wearing a miniature golden helmet and carrying a wooden shield, set against a simple solid violet background in a nostalgic arcade gaming style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt8et93XjZumgTcwz17T660f5WNEVrtie4E29amc_bWdwkYPsgcbiQ_BW8h4kwSR7j_VOjFtNlMgTERBtjagJEHAfXtR6gxNRPR2mqgBJDie9EM3QE2SsO5P7xqH8Eny9MNp6Kg5EIteowllmW9_fkp_3vVBQpK_l1LIA2EGEJhVwaG-G2IqLUGwkC0gz0j35EvmWp8KYQTJUEXkARzkyxUMIathyA6DrMOWty2rzF05eVyBtteRJY6u0uxepaf5aZaLby5cW6mWY"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile uppercase tracking-tighter text-on-surface">HERO STATS</h1>
+</div>
+<div class="px-3 py-1 bg-primary-container pixel-border font-label-sm text-label-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+            1,240 GP
+        </div>
+</header>
+<main class="flex-grow pt-24 pb-28 px-4 max-w-md mx-auto w-full space-y-6">
+<!-- Hero Header Card -->
+<section class="bg-surface pixel-border hard-shadow p-4">
+<div class="flex gap-4 mb-4">
+<div class="w-24 h-24 pixel-border hard-shadow shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A large, detailed pixel art character portrait of a generic 'hero' player character. The character has spiky brown hair, a determined expression, and wears a simple green adventurer outfit. The style is classic 16-bit RPG with heavy black outlines and bold shading." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArtoiOca7bp1sk4e6DJfP7EW33O-d-AhhKqFSSx80tkOngDMLtXClUIll4nIuMy1jfjdBTztYy43FQGklReskKArhjl0Q-LBR3d0u-EpboKkVQhDTPwtR7vHlNyCIUHHQnWXJMlnEuKdksmZ8MX70rauwiFom3qfn4QeArFXBfjKl3jSJ7wkGd6bM8l8ya3yIEJN9RRLpJ48CdrHBl5kv-VUBQzs6B9GOpDBhRSufUIo_U3vwTU7k7PzBtndydf9qZJBVB_X2T5hc"/>
+</div>
+<div class="flex flex-col justify-center">
+<h2 class="font-headline-lg text-on-surface leading-tight">PLAYER ONE</h2>
+<p class="font-label-sm text-label-sm text-brand-violet uppercase bg-brand-violet/10 inline-block px-2 py-0.5 mb-1">THE THRIFTY</p>
+<div class="font-label-sm text-label-sm">LEVEL 12</div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-[10px] uppercase">
+<span>XP PROGRESS</span>
+<span>2,400 / 3,000</span>
+</div>
+<!-- Segmented Gold XP Bar -->
+<div class="h-6 bg-surface-variant pixel-border flex items-center overflow-hidden">
+<div class="h-full bg-primary-container flex w-[80%] border-r-[3px] border-outline">
+<div class="segmented-bar-segment"></div>
+<div class="segmented-bar-segment"></div>
+<div class="segmented-bar-segment"></div>
+<div class="segmented-bar-segment"></div>
+<div class="segmented-bar-segment"></div>
+<div class="segmented-bar-segment"></div>
+<div class="segmented-bar-segment"></div>
+<div class="segmented-bar-segment"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stat Grid -->
+<div class="grid grid-cols-2 gap-4">
+<!-- MONEY HEALTH -->
+<div class="bg-surface pixel-border hard-shadow p-3 flex flex-col justify-between aspect-square">
+<div>
+<h3 class="font-label-sm text-[10px] uppercase text-money-green mb-1">MONEY HEALTH</h3>
+<div class="font-headline-lg-mobile tabular-nums text-money-green">82%</div>
+</div>
+<div class="h-3 bg-surface-variant pixel-border">
+<div class="h-full bg-money-green w-[82%]"></div>
+</div>
+</div>
+<!-- DAY STREAK -->
+<div class="bg-surface pixel-border hard-shadow p-3 flex flex-col justify-between aspect-square">
+<div>
+<h3 class="font-label-sm text-[10px] uppercase text-primary-container mb-1">DAY STREAK</h3>
+<div class="font-headline-lg-mobile tabular-nums text-primary-container">14</div>
+</div>
+<div class="flex justify-end">
+<span class="material-symbols-outlined text-primary-container text-4xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+</div>
+<!-- COINS -->
+<div class="bg-surface pixel-border hard-shadow p-3 flex flex-col justify-between aspect-square">
+<div>
+<h3 class="font-label-sm text-[10px] uppercase text-on-surface mb-1">COINS</h3>
+<div class="font-headline-lg-mobile tabular-nums">1,250</div>
+</div>
+<div class="flex justify-end">
+<img alt="Gold Coin" class="w-10 h-10" src="https://lh3.googleusercontent.com/aida/AP1WRLslVLK4BBu4oCReAAAtyGYoaVh5FYNUimdypUFlo4zmOROoe7mWfp8GmXBna89wTE9bkxCs5EZ_woQ8Ke0hwL11iX-VhIPbSq78IKkVMMDXIDuDQ1fTlxqNKnTvLndZJwPWE-qRhyARPPujcKZSDjZEzBJxxtLmLFSSUN60hZdtECTvyOokkvEGx4_SKpixLfzJwR8yhy0kytHgFpIv7n-a3YKY7kKF2yAcq7ElarEFCNLBioH-O7SPxg"/>
+</div>
+</div>
+<!-- BOSSES BEATEN -->
+<div class="bg-surface pixel-border hard-shadow p-3 flex flex-col justify-between aspect-square">
+<div>
+<h3 class="font-label-sm text-[10px] uppercase text-on-surface mb-1">BOSSES BEATEN</h3>
+<div class="font-headline-lg-mobile tabular-nums">27</div>
+</div>
+<div class="flex justify-end">
+<span class="material-symbols-outlined text-on-surface text-4xl">swords</span>
+</div>
+</div>
+</div>
+<!-- Badges Section -->
+<section class="bg-surface pixel-border hard-shadow p-4">
+<h3 class="font-label-sm text-on-surface uppercase border-b-2 border-outline pb-2 mb-4">ACHIEVEMENTS</h3>
+<div class="grid grid-cols-4 gap-4">
+<div class="group relative flex flex-col items-center">
+<div class="w-12 h-12 bg-secondary-container pixel-border flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-on-secondary-container">calendar_today</span>
+</div>
+<span class="font-label-sm text-[8px] text-center uppercase leading-none">NO-SPEND WEEK</span>
+</div>
+<div class="group relative flex flex-col items-center">
+<div class="w-12 h-12 bg-primary-container pixel-border flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-on-primary-container">account_balance</span>
+</div>
+<span class="font-label-sm text-[8px] text-center uppercase leading-none">BUDGET MASTER</span>
+</div>
+<div class="group relative flex flex-col items-center">
+<div class="w-12 h-12 bg-error-container pixel-border flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-on-error-container">skull</span>
+</div>
+<span class="font-label-sm text-[8px] text-center uppercase leading-none">BOSS SLAYER</span>
+</div>
+<div class="group relative flex flex-col items-center opacity-40">
+<div class="w-12 h-12 bg-surface-variant pixel-border flex items-center justify-center mb-1 grayscale">
+<span class="material-symbols-outlined">savings</span>
+</div>
+<span class="font-label-sm text-[8px] text-center uppercase leading-none">FIRST SAVE</span>
+</div>
+</div>
+</section>
+<!-- Perks List Card -->
+<section class="bg-surface pixel-border hard-shadow p-4">
+<div class="bg-inverse-surface text-surface px-2 py-1 inline-block mb-3">
+<h3 class="font-label-sm uppercase">ACTIVE PERKS</h3>
+</div>
+<ul class="space-y-3 font-body-md text-on-surface">
+<li class="flex items-start gap-3">
+<div class="w-2 h-2 mt-2 bg-brand-violet"></div>
+<div>
+<div class="font-bold uppercase text-[12px]">SAVVY SHOPPER</div>
+<p class="text-[10px] leading-tight text-on-surface-variant">Reduces "Impulse Buy" damage by 15%</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-2 h-2 mt-2 bg-money-green"></div>
+<div>
+<div class="font-bold uppercase text-[12px]">INTEREST SHIELD</div>
+<p class="text-[10px] leading-tight text-on-surface-variant">Passively generates 0.5 XP every hour</p>
+</div>
+</li>
+</ul>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-2 bg-surface-container border-t-[3px] border-outline shadow-[0px_-4px_0px_0px_rgba(0,0,0,1)]">
+<!-- HOME -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-1 active:translate-y-1 transition-all duration-75">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-[10px]">HOME</span>
+</button>
+<!-- BATTLES -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-1 active:translate-y-1 transition-all duration-75">
+<span class="material-symbols-outlined">swords</span>
+<span class="font-label-sm text-[10px]">BATTLES</span>
+</button>
+<!-- CENTER + BUTTON -->
+<button class="relative -top-4 w-14 h-14 bg-primary-container pixel-border shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center active:translate-y-1 active:shadow-none transition-all duration-75">
+<span class="material-symbols-outlined text-3xl font-bold">add</span>
+</button>
+<!-- LEDGER -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-1 active:translate-y-1 transition-all duration-75">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-[10px]">LEDGER</span>
+</button>
+<!-- HERO (ACTIVE) -->
+<button class="flex flex-col items-center justify-center bg-brand-violet text-on-primary pixel-border p-1 active:translate-y-1 transition-all duration-75">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-[10px]">HERO</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interaction for active states
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                if(btn.classList.contains('hard-shadow')) {
+                    btn.classList.remove('hard-shadow');
+                    btn.classList.add('hard-shadow-active');
+                }
+            });
+            btn.addEventListener('mouseup', () => {
+                if(btn.classList.contains('hard-shadow-active')) {
+                    btn.classList.add('hard-shadow');
+                    btn.classList.remove('hard-shadow-active');
+                }
+            });
+            btn.addEventListener('mouseleave', () => {
+                if(btn.classList.contains('hard-shadow-active')) {
+                    btn.classList.add('hard-shadow');
+                    btn.classList.remove('hard-shadow-active');
+                }
+            });
+        });
+    </script>
+</body></html>

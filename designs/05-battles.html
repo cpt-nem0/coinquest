@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BATTLES - Fin-Knight</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#fcf9f8",
+                    "secondary-container": "#fe932c",
+                    "surface-dim": "#dcd9d9",
+                    "inverse-surface": "#303030",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#ffdea1",
+                    "surface-container-highest": "#e5e2e1",
+                    "surface-variant": "#e5e2e1",
+                    "surface-container-low": "#f6f3f2",
+                    "primary": "#7a5900",
+                    "on-secondary-fixed": "#2f1500",
+                    "tertiary": "#665f3d",
+                    "tertiary-container": "#d4caa0",
+                    "surface-bright": "#fcf9f8",
+                    "on-tertiary-fixed-variant": "#4d4727",
+                    "on-surface": "#1b1b1c",
+                    "surface-tint": "#7a5900",
+                    "outline-variant": "#d4c5ac",
+                    "inverse-primary": "#fbbc18",
+                    "secondary-fixed": "#ffdcc3",
+                    "background": "#fcf9f8",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#261900",
+                    "primary-container": "#ffc01e",
+                    "on-secondary-fixed-variant": "#6e3900",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#d1c79d",
+                    "on-tertiary-container": "#5c5534",
+                    "secondary-fixed-dim": "#ffb77d",
+                    "secondary": "#904d00",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#fbbc18",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#201c02",
+                    "on-surface-variant": "#504533",
+                    "on-primary-container": "#6e5000",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ede3b8",
+                    "on-secondary-container": "#663500",
+                    "on-background": "#1b1b1c",
+                    "outline": "#14130f", /* Forced to Neo-Brutalist Black */
+                    "surface-container-high": "#eae7e7",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#f0eded",
+                    "on-primary-fixed-variant": "#5c4300",
+                    "inverse-on-surface": "#f3f0ef",
+                    "boss-winning": "#12a35a",
+                    "boss-ahead": "#fe932c",
+                    "paper": "#fffdf7",
+                    "battle-violet": "#5b3df0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "container-max": "1200px",
+                    "pixel-unit": "4px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "body-lg": ["JetBrains Mono"],
+                    "headline-xl": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "headline-lg-mobile": ["Space Grotesk"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-md": ["JetBrains Mono"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .neo-shadow {
+            box-shadow: 4px 4px 0px 0px #14130f;
+        }
+        .neo-shadow-sm {
+            box-shadow: 2px 2px 0px 0px #14130f;
+        }
+        .neo-shadow-active {
+            box-shadow: 0px 0px 0px 0px #14130f;
+            transform: translate(2px, 2px);
+        }
+        .hp-bar-segment {
+            width: 8px;
+            height: 16px;
+            margin-right: 2px;
+            border: 1px solid #14130f;
+        }
+        .tabular {
+            font-variant-numeric: tabular-nums;
+        }
+        body {
+            background-color: #fffdf7;
+            color: #14130f;
+        }
+    </style>
+</head>
+<body class="font-body-md bg-paper selection:bg-primary-container">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface-container border-b-2 border-outline neo-shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 border-2 border-outline bg-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A pixel-art portrait of a medieval hero with a shining gold helmet and a blue cape, designed in a chunky 16-bit retro style with high contrast and thick black outlines. The hero looks determined and is set against a warm parchment background, maintaining the arcade light theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRipcE2zTx0_yYclzYHdxEbB1IoxpSXgy5mcf-ttfL-81nZ02T44K3IfqMKmh94hjY3n6H0DRsPApmXxP_llT8d1LNJRiyqRb_WIdVIxaqzq9cvSKhqjAQEolnfDe-HjnC9Yn6QcBEpN8-TVVa2mNOR9gjaQQIe3hI_9hdwAEstEKQmx1FSxTq3p5EXF7QIgQvDjPcQZnairnP-7PhywvHzFnWIPY0ufz4l8fRS12OCO4Twj5bAxf7PryVZmIadmRZeXp1yQZR2lk"/>
+</div>
+<span class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">Lvl 24 Fin-Knight</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-primary-container border-2 border-outline font-bold tabular">
+<img alt="GP" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida/AP1WRLslVLK4BBu4oCReAAAtyGYoaVh5FYNUimdypUFlo4zmOROoe7mWfp8GmXBna89wTE9bkxCs5EZ_woQ8Ke0hwL11iX-VhIPbSq78IKkVMMDXIDuDQ1fTlxqNKnTvLndZJwPWE-qRhyARPPujcKZSDjZEzBJxxtLmLFSSUN60hZdtECTvyOokkvEGx4_SKpixLfzJwR8yhy0kytHgFpIv7n-a3YKY7kKF2yAcq7ElarEFCNLBioH-O7SPxg"/>
+<span>1,240 GP</span>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-24 pb-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Header Section -->
+<section class="mb-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-headline-xl text-headline-xl mb-1 uppercase tracking-tight">BATTLES</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Beat your 3-month median</p>
+</div>
+<div class="inline-block self-start md:self-auto bg-inverse-surface text-surface px-4 py-2 border-2 border-outline neo-shadow font-label-sm text-label-sm uppercase">
+                    BOSSES BEATEN 3 / 5
+                </div>
+</div>
+</section>
+<!-- Boss Cards List -->
+<div class="space-y-6">
+<!-- FOOD BOSS -->
+<div class="bg-surface-container-lowest border-[3px] border-outline neo-shadow p-4 md:p-6 transition-transform active:translate-y-1">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 bg-surface-container-high border-2 border-outline flex items-center justify-center">
+<img class="w-12 h-12" data-alt="A pixel-art monster shaped like a giant carnivorous hamburger with sharp white teeth and mean yellow eyes. The monster is rendered in chunky 8-bit blocks with vibrant reds and browns, outlined in heavy black 3px strokes on a light tan background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7WqfG5LDKkCd93KnfkQT9IzWb8-lCG5JFDbY1O37FSuOpVbv92iTCE2WuCqWDHUd0jngJOQ9KFUSBauSwAGWWdSNt_XfWjG8CpUzhRVerv2zJbLehdqKFCBpPfo7cFwLtxN6Lf9PROAcMDoJq2ZiTXpnd9SIguNTeo8Ew5pMfS-w9FJgwAkCetdmO1AkxoNs-e2479dELxRkHnMN5p5aKpychZ0vWjE36YFNuzZ05do1cW1sFV4IFIyUZsFqHp1w_i4asvYLcPHw"/>
+</div>
+<div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">FOOD BOSS</h3>
+<p class="font-label-sm text-label-sm text-boss-winning font-bold uppercase">WINNING</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-headline-lg-mobile tabular font-bold">₹12,480</div>
+<div class="text-label-sm text-on-surface-variant uppercase tabular">Median: ₹13,200</div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="mr-3 font-label-sm font-bold">HP</span>
+<div class="flex flex-wrap flex-1">
+<!-- HP segments -->
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-surface-variant"></div>
+<div class="hp-bar-segment bg-surface-variant"></div>
+</div>
+</div>
+</div>
+<!-- SHOPPING BOSS -->
+<div class="bg-surface-container-lowest border-[3px] border-outline neo-shadow p-4 md:p-6 transition-transform active:translate-y-1">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 bg-surface-container-high border-2 border-outline flex items-center justify-center">
+<img class="w-12 h-12" data-alt="A pixel-art monster depicted as a treasure chest with long spindly purple legs and a greedy face. It has golden coins spilling out from its mouth and expressive angry eyebrows, designed in high-contrast chunky pixels with a thick black border." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF0rkleNtRKDpdMVibMXK-ME15c-WGB--v9GshZ-ZBtE7y6m807J-Xpfg8Cjv4AtNNxLLucZN2q9it39V2h_xECx1bFyhJhf2znrTNN-2fxMhy_-l_pNPKaxrz7IzKNKLqw_PkkCpHgoz-vGTcmDBNwR215_bzR2tUBa9wkMxyxsbsIJWO1Oa1lmK6Ng9tKzrWxBk6gx2-YLcYg15ohY6LwV5QWNWiCaKO0isFgC2R0sS30ObknCRxXu2dGSNiGsgWAN79SwAs93U"/>
+</div>
+<div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">SHOPPING BOSS</h3>
+<p class="font-label-sm text-label-sm text-boss-ahead font-bold uppercase">BOSS AHEAD</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-headline-lg-mobile tabular font-bold text-boss-ahead">₹8,200</div>
+<div class="text-label-sm text-on-surface-variant uppercase tabular">Median: ₹7,500</div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="mr-3 font-label-sm font-bold">HP</span>
+<div class="flex flex-wrap flex-1">
+<div class="hp-bar-segment bg-boss-ahead"></div>
+<div class="hp-bar-segment bg-boss-ahead"></div>
+<div class="hp-bar-segment bg-boss-ahead"></div>
+<div class="hp-bar-segment bg-boss-ahead"></div>
+<div class="hp-bar-segment bg-boss-ahead"></div>
+<div class="hp-bar-segment bg-boss-ahead"></div>
+<div class="hp-bar-segment bg-boss-ahead"></div>
+<div class="hp-bar-segment bg-boss-ahead"></div>
+<div class="hp-bar-segment bg-boss-ahead"></div>
+<div class="hp-bar-segment bg-boss-ahead"></div>
+<div class="hp-bar-segment bg-boss-ahead ring-2 ring-outline"></div>
+<div class="hp-bar-segment bg-boss-ahead ring-2 ring-outline"></div>
+</div>
+</div>
+</div>
+<!-- TRANSPORT BOSS -->
+<div class="bg-surface-container-lowest border-[3px] border-outline neo-shadow p-4 md:p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 bg-surface-container-high border-2 border-outline flex items-center justify-center">
+<img class="w-12 h-12" data-alt="A chunky pixel-art monster that looks like a sentient racing tire with fiery exhaust pipes for ears. It has a competitive grin and large cartoony eyes, utilizing a palette of grey, black, and bright orange with thick black outlines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMZARoD5_SRIEzUMXGxm6IuTcSC1vOSLmCk4Y-6pHZwyS3rX2eckkuoRElCMxdh5d-sP5El8VCgJYJOukMyJifmtj-KtNU1PVg9k1u7hF19sZw8h2X9HPSm3XjXxGBuJSG-iSG1bpSaeh7wpaib-W3sa-at3Yjfv0Anh4-EwNFvsJCWDWChBMbJ8BrgqzNNYMFwBIhAZEX92zAcE68Xbv-5f8r_30IZlLW_VIJMOpf-vQ-jZzGKdIzVBuv9BThcasvAohczeDECL8"/>
+</div>
+<div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">TRANSPORT BOSS</h3>
+<p class="font-label-sm text-label-sm text-boss-winning font-bold uppercase">WINNING</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-headline-lg-mobile tabular font-bold">₹3,100</div>
+<div class="text-label-sm text-on-surface-variant uppercase tabular">Median: ₹4,000</div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="mr-3 font-label-sm font-bold">HP</span>
+<div class="flex flex-wrap flex-1">
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-surface-variant"></div>
+<div class="hp-bar-segment bg-surface-variant"></div>
+<div class="hp-bar-segment bg-surface-variant"></div>
+</div>
+</div>
+</div>
+<!-- FUN BOSS -->
+<div class="bg-surface-container-lowest border-[3px] border-outline neo-shadow p-4 md:p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 bg-surface-container-high border-2 border-outline flex items-center justify-center">
+<img class="w-12 h-12" data-alt="A whimsical pixel-art monster resembling an arcade machine with a mischievous face on the screen. It has joystick arms and glowing neon buttons, rendered in bright pinks, purples, and blues with a heavy black outline." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTq2IuEz2qhIvtfwCr8ZCR4V1LC2JNs8OhCveGLOTDzyuHajGIKAxvN2BndM7vsHDbOwEzbtTNFuBme3NwjRAZA8Lzp0H1H4vpe9r6RvEBzRQkih6L8EKgqON9a6X6ZfbNzxKOOLq7iL1vQeq7goNpCOr5_L32KKgx_PpIkeETLledkXPil_VMhVBEsmC_OWa6xG7rva_NhFXV7YTeVDo4_VzV2pzNWe9J3mMOmtgbirobx9DfzIkbnFRlP4PyWh6FV9PAZeVvDrY"/>
+</div>
+<div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">FUN BOSS</h3>
+<p class="font-label-sm text-label-sm text-boss-ahead font-bold uppercase">BOSS AHEAD</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-headline-lg-mobile tabular font-bold text-boss-ahead">₹5,600</div>
+<div class="text-label-sm text-on-surface-variant uppercase tabular">Median: ₹5,000</div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="mr-3 font-label-sm font-bold">HP</span>
+<div class="flex flex-wrap flex-1">
+<div class="hp-bar-segment bg-boss-ahead"></div>
+<div class="hp-bar-segment bg-boss-ahead"></div>
+<div class="hp-bar-segment bg-boss-ahead"></div>
+<div class="hp-bar-segment bg-boss-ahead"></div>
+<div class="hp-bar-segment bg-boss-ahead"></div>
+<div class="hp-bar-segment bg-boss-ahead ring-2 ring-outline"></div>
+</div>
+</div>
+</div>
+<!-- GROCERY BOSS -->
+<div class="bg-surface-container-lowest border-[3px] border-outline neo-shadow p-4 md:p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 bg-surface-container-high border-2 border-outline flex items-center justify-center">
+<img class="w-12 h-12" data-alt="A pixel-art monster shaped like a giant shopping basket overflowing with angry-looking fruit and vegetable monsters. The colors are vibrant greens and oranges, with chunky block pixels and a solid 3px black outline." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp8GAGK-4pTjWvxLDx6Eg8iqS-m30a0_1IrjRH8PA-IrDpeQ30SvA2jM36PdMLAI5ZOK_3aycPcds6hC1YiVrw8EKSf1oFoLM6iSQEtAr4ifuYxj9jmf2gBlgBWYWT-bgAN5dM8gkXx_ChL_opRw7KmPEtjEK7j7a3lIRXLl9vIqLGTWFFha4BYk_sgyn-xbcit9E4KyEuYSBAmc6s8rozQO10Q0_b6Rupwnio_Dy7R_eN_lUeyHD8QGajuYfdOFJurZW7xQi0W2E"/>
+</div>
+<div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile uppercase">GROCERY BOSS</h3>
+<p class="font-label-sm text-label-sm text-boss-winning font-bold uppercase">WINNING</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-headline-lg-mobile tabular font-bold">₹14,500</div>
+<div class="text-label-sm text-on-surface-variant uppercase tabular">Median: ₹15,000</div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="mr-3 font-label-sm font-bold">HP</span>
+<div class="flex flex-wrap flex-1">
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-boss-winning"></div>
+<div class="hp-bar-segment bg-surface-variant"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Note -->
+<div class="mt-12 bg-surface-container-high border-[3px] border-outline p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="font-body-md text-on-surface text-center md:text-left">
+                Fixed bills (Rent, Insurance) aren't battles.
+            </p>
+<a class="font-bold underline uppercase hover:text-primary transition-colors" href="#">VIEW BILLS</a>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-paper border-t-[3px] border-outline flex justify-around items-center h-20 px-2 pb-2">
+<!-- HOME -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest active:translate-y-[2px] transition-transform">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-label-sm text-label-sm mt-1">HOME</span>
+</button>
+<!-- BATTLES (ACTIVE) -->
+<button class="flex flex-col items-center justify-center bg-battle-violet text-white border-[3px] border-outline p-2 neo-shadow-sm -mt-4">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">swords</span>
+<span class="font-label-sm text-label-sm mt-1">BATTLES</span>
+</button>
+<!-- RAISED ADD BUTTON -->
+<button class="w-16 h-16 bg-primary-container border-[3px] border-outline neo-shadow flex items-center justify-center -mt-10 group active:translate-y-1 active:shadow-none transition-all">
+<span class="material-symbols-outlined text-[32px] font-bold">add</span>
+</button>
+<!-- LEDGER -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest active:translate-y-[2px] transition-transform">
+<span class="material-symbols-outlined text-[24px]">menu_book</span>
+<span class="font-label-sm text-label-sm mt-1">LEDGER</span>
+</button>
+<!-- HERO -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest active:translate-y-[2px] transition-transform">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="font-label-sm text-label-sm mt-1">HERO</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for cards to feel "pushed"
+        document.querySelectorAll('.neo-shadow').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.classList.add('neo-shadow-active');
+                card.classList.remove('neo-shadow');
+            });
+            card.addEventListener('mouseup', () => {
+                card.classList.remove('neo-shadow-active');
+                card.classList.add('neo-shadow');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('neo-shadow-active');
+                card.classList.add('neo-shadow');
+            });
+        });
+    </script>
+</body></html>

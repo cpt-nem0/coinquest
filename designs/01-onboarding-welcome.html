@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>COINQUEST - Welcome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#e7e2db",
+                    "card-surface": "#1f1e18",
+                    "outline-variant": "#484551",
+                    "shadow-black": "#000000",
+                    "primary-fixed": "#e7deff",
+                    "on-tertiary": "#00391e",
+                    "surface-container-low": "#1d1c17",
+                    "on-secondary-fixed": "#241a00",
+                    "tertiary-fixed": "#75fcac",
+                    "tertiary": "#5ce597",
+                    "surface-container-lowest": "#0f0e0a",
+                    "deep-surface": "#0d0c09",
+                    "on-secondary": "#3e2e00",
+                    "outline": "#938f9c",
+                    "secondary-container": "#c29800",
+                    "surface-dim": "#14130f",
+                    "paper": "#fffdf7", /* Custom onboarding warm paper */
+                    "on-primary-container": "#473588",
+                    "on-primary-fixed": "#1e015f",
+                    "on-surface": "#14130f",
+                    "on-tertiary-fixed-variant": "#00522e",
+                    "surface-container-highest": "#363530",
+                    "on-surface-variant": "#484551",
+                    "on-secondary-fixed-variant": "#594400",
+                    "background": "#fffdf7",
+                    "surface-container-high": "#2b2a25",
+                    "surface-tint": "#5b3df0",
+                    "secondary-fixed": "#ffdf92",
+                    "on-tertiary-container": "#004e2b",
+                    "secondary": "#efc137",
+                    "on-primary-fixed-variant": "#4a398c",
+                    "loss-red": "#ff6a5c",
+                    "inverse-primary": "#6251a5",
+                    "error": "#ffb4ab",
+                    "primary-container": "#5b3df0",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed": "#00210f",
+                    "on-background": "#14130f",
+                    "surface": "#fffdf7",
+                    "error-container": "#93000a",
+                    "on-secondary-container": "#433300",
+                    "inverse-on-surface": "#32302c",
+                    "on-error-container": "#ffdad6",
+                    "surface-container": "#21201b",
+                    "secondary-fixed-dim": "#efc137",
+                    "surface-variant": "#363530",
+                    "surface-bright": "#3b3934",
+                    "tertiary-fixed-dim": "#56df92",
+                    "tertiary-container": "#3ac87e",
+                    "primary-fixed-dim": "#cbbeff",
+                    "ink": "#14130f",
+                    "primary": "#5b3df0",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "base": "4px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "xl": "40px",
+                    "sm": "8px",
+                    "border-width": "3px",
+                    "shadow-offset": "4px"
+            },
+            "fontFamily": {
+                    "mono-num": ["Space Grotesk"],
+                    "body-md": ["Space Grotesk"],
+                    "label-md": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "display": ["Space Grotesk"],
+                    "amount-lg": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "mono-num": ["15px", {"lineHeight": "18px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "headline-lg": ["28px", {"lineHeight": "31px", "fontWeight": "700"}],
+                    "display": ["40px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "amount-lg": ["36px", {"lineHeight": "36px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #fffdf7;
+            -webkit-font-smoothing: antialiased;
+        }
+        .neo-shadow {
+            box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+        }
+        .neo-shadow-active:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 1);
+        }
+        .pixel-text {
+            text-shadow: 2px 2px 0px #000;
+            letter-spacing: -0.05em;
+        }
+        .chip-container {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+        .pixel-chip {
+            border: 3px solid #14130f;
+            padding: 4px 10px;
+            background: white;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        /* Mechanical Interaction classes */
+        .btn-interact {
+            transition: all 0.05s ease;
+        }
+        .btn-interact:active {
+            transform: translate(4px, 4px);
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+<body class="bg-paper text-on-background min-h-screen flex flex-col overflow-hidden">
+<!-- Top AppBar (Injected from JSON Identity) -->
+<header class="w-full top-0 border-b-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] bg-paper flex justify-between items-center px-lg py-md z-50">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface text-2xl font-bold">menu</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg uppercase font-bold tracking-tighter text-on-surface">
+            COINQUEST
+        </h1>
+<div class="w-8"></div> <!-- Spacer for center alignment -->
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col items-center justify-center p-lg relative">
+<!-- Hero Section -->
+<div class="flex flex-col items-center justify-center space-y-xl w-full max-w-sm">
+<!-- Hero Asset: The Big Gold Pixel Sparkle Coin -->
+<div class="relative w-64 h-64 flex items-center justify-center group">
+<!-- Retro Glow Effect behind coin -->
+<div class="absolute inset-0 bg-secondary/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img alt="CoinQuest Hero Coin" class="w-full h-full object-contain relative z-10 animate-bounce transition-transform duration-[2000ms]" src="https://lh3.googleusercontent.com/aida/AP1WRLsGtNvP848GwLjrP3pLw5t8f4FB2_ZlfGN65u3TRVytV8PlsL6kxwLwp8vqonlfPwAW5OYAnJdmJv8hKI-_AxR9QxcpI2wejWYo_V2B1gU5trtaD9mea6Ltzbxy0TPhmcSVhehrZfp-QSE-Bqx3HMeg15lrBujNhVSKTCoAQ0s44mX1dIPVsLdBtwXyPWgrfM66SI2GsqhCotgAmuYlcstChO3OP9emoxPGRSTuTR9r_CcRjVixn9oYLJE" style="animation-duration: 3s;"/>
+</div>
+<!-- Brand Identity -->
+<div class="text-center space-y-md">
+<h2 class="font-display text-display uppercase tracking-tighter text-on-surface scale-y-110">
+                    COINQUEST
+                </h2>
+<p class="font-headline-md text-headline-md uppercase text-on-surface-variant max-w-[280px] mx-auto leading-none">
+                    TURN YOUR SPENDING INTO A QUEST
+                </p>
+</div>
+<!-- Gamified Features (Chips) -->
+<div class="chip-container pt-md">
+<div class="pixel-chip neo-shadow bg-white text-on-background">AUTO-TRACKS</div>
+<div class="pixel-chip neo-shadow bg-tertiary text-on-tertiary">BEAT BOSSES</div>
+<div class="pixel-chip neo-shadow bg-secondary text-on-secondary">LEVEL UP</div>
+</div>
+<!-- Actions Container -->
+<div class="w-full pt-xl space-y-lg">
+<!-- Primary Action Button -->
+<button class="btn-interact w-full bg-primary text-white font-headline-md text-headline-md py-md border-[3px] border-black neo-shadow uppercase tracking-wide" onclick="console.log('Journey Started')">
+                    START YOUR QUEST
+                </button>
+<!-- Secondary Action Link -->
+<div class="text-center">
+<a class="font-label-md text-label-md uppercase underline decoration-2 underline-offset-4 hover:text-primary transition-colors" href="#">
+                        I already have an account
+                    </a>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Visual Element (Atmospheric Ledger divider style) -->
+<div class="w-full h-[3px] bg-black"></div>
+<div class="w-full bg-secondary py-xs flex justify-center items-center overflow-hidden whitespace-nowrap">
+<div class="flex animate-marquee gap-xl px-xl">
+<span class="font-label-md text-on-secondary-fixed text-xs uppercase">+100 XP RECORDED</span>
+<span class="font-label-md text-on-secondary-fixed text-xs uppercase">NEW BOSS UNLOCKED: OVERSPENDING OCTOPUS</span>
+<span class="font-label-md text-on-secondary-fixed text-xs uppercase">STREAK: 5 DAYS</span>
+<span class="font-label-md text-on-secondary-fixed text-xs uppercase">COIN DROPS ACTIVE</span>
+<!-- Duplicated for loop -->
+<span class="font-label-md text-on-secondary-fixed text-xs uppercase">+100 XP RECORDED</span>
+<span class="font-label-md text-on-secondary-fixed text-xs uppercase">NEW BOSS UNLOCKED: OVERSPENDING OCTOPUS</span>
+</div>
+</div>
+<style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            animation: marquee 20s linear infinite;
+        }
+        
+        /* Ensure specific button interaction for touch devices */
+        button:active {
+            background-color: #4a398c; /* Slightly darker violet */
+        }
+    </style>
+<script>
+        // Simple micro-interaction for the coin on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const coin = document.querySelector('img[src*="IMAGE_39"]');
+            if (coin) {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                coin.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg) scale(1.05)`;
+            }
+        });
+
+        // Reset coin orientation
+        document.addEventListener('mouseleave', () => {
+            const coin = document.querySelector('img[src*="IMAGE_39"]');
+            if (coin) {
+                coin.style.transform = `rotateY(0deg) rotateX(0deg) scale(1)`;
+            }
+        });
+    </script>
+</body></html>

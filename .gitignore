@@ -1,0 +1,38 @@
+# === Coinquest — repo root ignore ===
+# (app/.gitignore additionally covers Expo/RN specifics inside app/)
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node / JS
+node_modules/
+*.log
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+*.tsbuildinfo
+
+# Expo / React Native build artifacts (any depth)
+.expo/
+dist/
+web-build/
+.metro-health-check*
+
+# Generated native projects
+ios/
+android/
+
+# Secrets / env / signing
+.env
+.env*.local
+*.pem
+*.key
+*.p8
+*.p12
+*.jks
+*.mobileprovision
+google-services.json
+GoogleService-Info.plist

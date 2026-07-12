@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>CoinQuest Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#cac4d2",
+                    "on-tertiary-fixed-variant": "#00522e",
+                    "surface-dim": "#14130f",
+                    "error": "#ffb4ab",
+                    "background": "#14130f",
+                    "surface-container-highest": "#363530",
+                    "secondary-fixed": "#ffdf92",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#4a398c",
+                    "on-secondary-fixed": "#241a00",
+                    "surface-bright": "#3b3934",
+                    "on-secondary-container": "#433300",
+                    "secondary-fixed-dim": "#efc137",
+                    "deep-surface": "#0d0c09",
+                    "on-secondary-fixed-variant": "#594400",
+                    "inverse-primary": "#6251a5",
+                    "surface-container-high": "#2b2a25",
+                    "on-tertiary-container": "#004e2b",
+                    "tertiary-fixed-dim": "#56df92",
+                    "secondary-container": "#c29800",
+                    "on-tertiary-fixed": "#00210f",
+                    "shadow-black": "#000000",
+                    "primary-container": "#b6a4ff",
+                    "on-secondary": "#3e2e00",
+                    "surface-variant": "#363530",
+                    "ink": "#f7f3e8",
+                    "paper": "#fffdf7", /* Light Neo-Brutalist Paper */
+                    "on-tertiary": "#00391e",
+                    "on-primary-fixed": "#1e015f",
+                    "error-container": "#93000a",
+                    "on-surface": "#14130f",
+                    "outline": "#14130f",
+                    "inverse-on-surface": "#32302c",
+                    "on-error": "#690005",
+                    "surface-container": "#f1eee4",
+                    "surface": "#fffdf7",
+                    "on-background": "#14130f",
+                    "loss-red": "#e23b2e",
+                    "gain-green": "#12a35a",
+                    "tertiary-fixed": "#75fcac",
+                    "primary": "#5b3df0",
+                    "surface-container-low": "#faf7ef",
+                    "on-primary-container": "#ffffff",
+                    "inverse-surface": "#e7e2db",
+                    "surface-tint": "#5b3df0",
+                    "tertiary": "#12a35a",
+                    "secondary": "#ffc01e",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#3ac87e",
+                    "primary-fixed-dim": "#cbbeff",
+                    "card-surface": "#ffffff",
+                    "primary-fixed": "#e7deff",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#14130f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "xl": "40px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "shadow-offset": "4px",
+                    "border-width": "3px",
+                    "lg": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Space Grotesk"],
+                    "body-md": ["Space Grotesk"],
+                    "mono-num": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "amount-lg": ["Space Grotesk"],
+                    "label-md": ["Space Grotesk"],
+                    "display": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg": ["28px", {"lineHeight": "31px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "mono-num": ["15px", {"lineHeight": "18px", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "amount-lg": ["36px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "700"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700"}],
+                    "display": ["40px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fffdf7;
+            color: #14130f;
+            font-family: 'Space Grotesk', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .brutalist-card {
+            border: 3px solid #14130f;
+            background-color: #ffffff;
+            box-shadow: 4px 4px 0px 0px #000000;
+            transition: all 0.1s ease;
+        }
+
+        .brutalist-card:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px 0px #000000;
+        }
+
+        .brutalist-button {
+            border: 3px solid #14130f;
+            box-shadow: 4px 4px 0px 0px #000000;
+            transition: all 0.1s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .brutalist-button:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px 0px #000000;
+        }
+
+        .mono-numerals {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .toggle-switch {
+            width: 52px;
+            height: 28px;
+            border: 3px solid #14130f;
+            position: relative;
+            background-color: #f1eee4;
+            cursor: pointer;
+        }
+
+        .toggle-switch.active {
+            background-color: #5b3df0;
+        }
+
+        .toggle-handle {
+            width: 20px;
+            height: 16px;
+            background-color: #14130f;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            transition: transform 0.1s steps(2);
+        }
+
+        .toggle-switch.active .toggle-handle {
+            transform: translateX(20px);
+            background-color: #ffffff;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .nav-item-active {
+            background-color: #5b3df0;
+            color: #ffffff;
+            border: 2px solid #14130f;
+            box-shadow: 2px 2px 0px 0px #000000;
+            padding: 4px;
+        }
+
+        /* Hide Scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-paper min-h-screen flex flex-col no-scrollbar">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-lg h-16 bg-paper">
+<div class="flex items-center gap-md">
+<button class="w-10 h-10 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface" style="font-size: 32px;">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface uppercase tracking-tighter">SETTINGS</h1>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-label-md text-on-surface mono-numerals uppercase">COINS: 1,250</span>
+<img alt="Coin" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLsGtNvP848GwLjrP3pLw5t8f4FB2_ZlfGN65u3TRVytV8PlsL6kxwLwp8vqonlfPwAW5OYAnJdmJv8hKI-_AxR9QxcpI2wejWYo_V2B1gU5trtaD9mea6Ltzbxy0TPhmcSVhehrZfp-QSE-Bqx3HMeg15lrBujNhVSKTCoAQ0s44mX1dIPVsLdBtwXyPWgrfM66SI2GsqhCotgAmuYlcstChO3OP9emoxPGRSTuTR9r_CcRjVixn9oYLJE"/>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 mt-16 mb-24 px-lg py-md space-y-md overflow-y-auto">
+<!-- Section 1: CURRENCY -->
+<section>
+<div class="brutalist-card p-md">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-md text-on-surface uppercase">CURRENCY</span>
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<button class="w-full flex items-center justify-between py-sm border-t-2 border-surface-container border-dashed mt-sm">
+<span class="font-body-md font-bold">Display currency: ₹ INR</span>
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<p class="font-label-md text-on-surface-variant text-[11px] mt-xs">All amounts show in your real currency.</p>
+</div>
+</section>
+<!-- Section 2: CONNECTED SOURCES -->
+<section>
+<div class="brutalist-card p-md">
+<span class="font-label-md text-on-surface uppercase mb-md block">CONNECTED SOURCES</span>
+<div class="space-y-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 bg-gain-green border-[1.5px] border-on-surface"></div>
+<span class="font-body-md font-bold">Bank SMS</span>
+</div>
+<span class="font-label-md text-gain-green">CONNECTED</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 bg-gain-green border-[1.5px] border-on-surface"></div>
+<span class="font-body-md font-bold">Gmail</span>
+</div>
+<span class="font-label-md text-gain-green">CONNECTED</span>
+</div>
+<div class="flex items-center justify-between opacity-50">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 bg-on-surface-variant border-[1.5px] border-on-surface"></div>
+<span class="font-body-md font-bold">UPI</span>
+</div>
+<span class="font-label-md">COMING SOON</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: GAME -->
+<section>
+<div class="brutalist-card p-md">
+<span class="font-label-md text-on-surface uppercase mb-md block">GAME</span>
+<div class="space-y-lg">
+<div class="flex items-center justify-between">
+<span class="font-body-md font-bold">Daily quest reminders</span>
+<div class="toggle-switch active" onclick="this.classList.toggle('active')">
+<div class="toggle-handle"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md font-bold">Boss alerts</span>
+<div class="toggle-switch active" onclick="this.classList.toggle('active')">
+<div class="toggle-handle"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: APPEARANCE -->
+<section>
+<div class="brutalist-card p-md">
+<span class="font-label-md text-on-surface uppercase mb-md block">APPEARANCE</span>
+<div class="flex gap-md">
+<button class="flex-1 brutalist-button bg-primary text-white border-on-surface shadow-black translate-x-[4px] translate-y-[4px] !shadow-none">
+                        LIGHT
+                    </button>
+<button class="flex-1 brutalist-button bg-surface-container text-on-surface-variant border-on-surface opacity-60 cursor-not-allowed shadow-none">
+                        DARK
+                    </button>
+</div>
+<p class="font-label-md text-on-surface-variant text-center mt-md text-[11px]">Dark — coming soon</p>
+</div>
+</section>
+<!-- Section 5: ACCOUNT -->
+<section>
+<div class="brutalist-card p-md space-y-md">
+<span class="font-label-md text-on-surface uppercase block">ACCOUNT</span>
+<button class="w-full flex items-center justify-between py-sm border-b border-surface-container">
+<span class="font-body-md font-bold">Export data</span>
+<span class="material-symbols-outlined">download</span>
+</button>
+<button class="w-full flex items-center justify-between py-sm border-b border-surface-container">
+<span class="font-body-md font-bold">Privacy</span>
+<span class="material-symbols-outlined">security</span>
+</button>
+<button class="w-full flex items-center justify-between py-sm text-loss-red">
+<span class="font-body-md font-bold">Log out</span>
+<span class="material-symbols-outlined">logout</span>
+</button>
+</div>
+</section>
+<!-- Aesthetic Footer Spacer -->
+<div class="h-8"></div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface-container-highest border-t-[3px] border-on-surface shadow-[0px_-4px_0px_0px_rgba(0,0,0,1)] px-2 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm uppercase">HOME</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2">
+<span class="material-symbols-outlined">swords</span>
+<span class="font-label-sm uppercase">BATTLES</span>
+</button>
+<!-- Elevated FAB style center button -->
+<div class="relative -top-4">
+<button class="w-16 h-16 bg-secondary brutalist-button flex items-center justify-center !p-0">
+<span class="material-symbols-outlined text-on-surface" style="font-size: 40px;">add</span>
+</button>
+</div>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm uppercase">LEDGER</span>
+</button>
+<button class="nav-item-active">
+<div class="flex flex-col items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm uppercase">HERO</span>
+</div>
+</button>
+</nav>
+<script>
+        // Simple toggle script for demo
+        document.querySelectorAll('.toggle-switch').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                toggle.classList.toggle('active');
+            });
+        });
+    </script>
+</body></html>

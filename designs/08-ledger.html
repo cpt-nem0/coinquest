@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coinquest Ledger - Transactions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..900&family=Space+Grotesk:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .tabular { font-variant-numeric: tabular-nums; }
+        .pixel-border { border-style: solid; }
+        .hard-shadow { box-shadow: 4px 4px 0px 0px #14130f; }
+        .hard-shadow-sm { box-shadow: 2px 2px 0px 0px #14130f; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fffdf7;
+            color: #1b1b1c;
+        }
+        /* Hide scrollbar for category row */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#fcf9f8",
+                        "on-surface": "#1b1b1c",
+                        "primary": "#7a5900",
+                        "primary-container": "#ffc01e",
+                        "on-primary-container": "#6e5000",
+                        "secondary-container": "#fe932c",
+                        "on-surface-variant": "#504533",
+                        "outline": "#827660",
+                        "surface": "#fcf9f8",
+                        "surface-container": "#f0eded",
+                        "error": "#ba1a1a",
+                        "success": "#2e7d32"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "pixel-unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-body-md text-on-surface antialiased">
+<!-- Top Navigation Bar (Shared Component: TopAppBar) -->
+<header class="flex justify-between items-center px-margin-mobile py-2 w-full bg-background border-b-[3px] border-on-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sticky top-0 z-40">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 border-[3px] border-on-surface bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A detailed pixel art portrait of a medieval hero wearing a golden helmet with a red plume. The character has a determined expression with sharp, blocky features. The background is a flat, muted parchment color. The art style is high-contrast, limited palette, 16-bit arcade aesthetic with heavy black outlines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2Z5VTGWmUrbxpgtoK-6zq-qDsvvZver2y-hnVL4CZESNp55PPJD5kD3-1tqxK11RFMMd8arx0fuhx7gMLCoVYDUJ76X3b4AR8nRC7EE9jmew6zXXN8bjbVyD-cN8ZiYMrZV2CTcwS1YgQN3PL6gUiJ4JESWGrdudc0WErOdaIUHskaA5Ps_Eb7RU4RsWYZHSxVsUWPpeaDbxvBJ9EzjxrtYgceRuVISnZeTJgagvPRJ7v5HrJQ_k3TNwZh8gd_VmY7v8tS2i4Gzs"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg-mobile text-[18px] leading-tight font-bold text-primary flex items-center gap-1">
+                    LVL 99 • 24,500 <img alt="Gold Coin" class="w-4 h-4 inline-block" src="https://lh3.googleusercontent.com/aida/AP1WRLslVLK4BBu4oCReAAAtyGYoaVh5FYNUimdypUFlo4zmOROoe7mWfp8GmXBna89wTE9bkxCs5EZ_woQ8Ke0hwL11iX-VhIPbSq78IKkVMMDXIDuDQ1fTlxqNKnTvLndZJwPWE-qRhyARPPujcKZSDjZEzBJxxtLmLFSSUN60hZdtECTvyOokkvEGx4_SKpixLfzJwR8yhy0kytHgFpIv7n-a3YKY7kKF2yAcq7ElarEFCNLBioH-O7SPxg"/>
+</span>
+</div>
+</div>
+<button class="material-symbols-outlined text-primary p-1 border-[3px] border-transparent active:translate-y-[2px] active:translate-x-[2px] active:shadow-none hover:bg-surface-container-high transition-colors">
+            settings
+        </button>
+</header>
+<main class="px-margin-mobile pt-6 pb-32 max-w-lg mx-auto">
+<!-- Header -->
+<section class="mb-6">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile uppercase tracking-tight">LEDGER</h1>
+<p class="text-on-surface-variant font-label-sm uppercase">Your spending, plain and clear.</p>
+</section>
+<!-- Search & Filter Section -->
+<section class="space-y-4 mb-8">
+<div class="relative">
+<input class="w-full h-12 bg-white border-[3px] border-on-surface px-4 font-label-sm focus:outline-none placeholder:text-outline-variant tabular" placeholder="SEARCH DEEDS..." type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2">search</span>
+</div>
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+<button class="shrink-0 px-4 py-2 bg-on-surface text-white font-label-sm border-[3px] border-on-surface">ALL</button>
+<button class="shrink-0 px-4 py-2 bg-white text-on-surface font-label-sm border-[3px] border-on-surface hover:bg-surface-container-high transition-colors">FEASTS</button>
+<button class="shrink-0 px-4 py-2 bg-white text-on-surface font-label-sm border-[3px] border-on-surface hover:bg-surface-container-high transition-colors">LOOT</button>
+<button class="shrink-0 px-4 py-2 bg-white text-on-surface font-label-sm border-[3px] border-on-surface hover:bg-surface-container-high transition-colors">TRAVEL</button>
+<button class="shrink-0 px-4 py-2 bg-white text-on-surface font-label-sm border-[3px] border-on-surface hover:bg-surface-container-high transition-colors">SUPPLIES</button>
+</div>
+</section>
+<!-- Summary Card -->
+<section class="mb-10">
+<div class="bg-white border-[3px] border-on-surface p-6 hard-shadow flex flex-col items-center justify-center text-center">
+<span class="font-label-sm text-on-surface-variant mb-2">SPENT TODAY</span>
+<span class="text-headline-lg font-bold tabular text-[48px]">₹1,065</span>
+<div class="w-full h-2 bg-surface-container border-[2px] border-on-surface mt-4 relative">
+<div class="absolute inset-0 bg-primary-container" style="width: 65%;"></div>
+</div>
+<span class="font-label-sm text-[10px] mt-2 text-outline">65% OF DAILY MANA LIMIT</span>
+</div>
+</section>
+<!-- Transaction List -->
+<section class="space-y-8">
+<!-- Today Group -->
+<div>
+<h3 class="font-label-sm bg-on-surface text-white inline-block px-3 py-1 mb-4">TODAY</h3>
+<div class="space-y-0 border-t-[3px] border-on-surface">
+<!-- Row 1 -->
+<div class="flex items-center justify-between py-4 border-b border-outline-variant">
+<div class="flex flex-col gap-1">
+<span class="font-bold text-lg leading-none">Swiggy</span>
+<div class="flex items-center gap-2">
+<span class="bg-primary-container/20 text-on-primary-container text-[10px] px-2 border border-primary-container font-bold">FEASTS</span>
+<span class="text-[10px] text-on-surface-variant tabular">14:20 • SMS</span>
+</div>
+</div>
+<span class="font-bold tabular text-error">−₹487</span>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center justify-between py-4 border-b border-outline-variant">
+<div class="flex flex-col gap-1">
+<span class="font-bold text-lg leading-none">Amazon</span>
+<div class="flex items-center gap-2">
+<span class="bg-secondary-container/20 text-on-secondary-container text-[10px] px-2 border border-secondary-container font-bold">LOOT</span>
+<span class="text-[10px] text-on-surface-variant tabular">11:05 • EMAIL</span>
+</div>
+</div>
+<span class="font-bold tabular text-error">−₹578</span>
+</div>
+</div>
+</div>
+<!-- Yesterday Group -->
+<div>
+<h3 class="font-label-sm bg-on-surface text-white inline-block px-3 py-1 mb-4">YESTERDAY</h3>
+<div class="space-y-0 border-t-[3px] border-on-surface">
+<!-- Row 3 -->
+<div class="flex items-center justify-between py-4 border-b border-outline-variant">
+<div class="flex flex-col gap-1">
+<span class="font-bold text-lg leading-none">Company Payroll</span>
+<div class="flex items-center gap-2">
+<span class="bg-success/20 text-success text-[10px] px-2 border border-success font-bold">BOUNTY</span>
+<span class="text-[10px] text-on-surface-variant tabular">09:00 • SMS</span>
+</div>
+</div>
+<span class="font-bold tabular text-success">+₹52,000</span>
+</div>
+<!-- Row 4 -->
+<div class="flex items-center justify-between py-4 border-b border-outline-variant">
+<div class="flex flex-col gap-1">
+<span class="font-bold text-lg leading-none">Uber</span>
+<div class="flex items-center gap-2">
+<span class="bg-surface-container-highest text-on-surface-variant text-[10px] px-2 border border-outline-variant font-bold">TRAVEL</span>
+<span class="text-[10px] text-on-surface-variant tabular">21:45 • EMAIL</span>
+</div>
+</div>
+<span class="font-bold tabular text-error">−₹340</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Shared Component: BottomNavBar) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-background border-t-[3px] border-on-surface shadow-[0px_-4px_0px_0px_rgba(0,0,0,1)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-secondary-container transition-all active:translate-y-[2px] active:shadow-none p-2" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">HOME</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-secondary-container transition-all active:translate-y-[2px] active:shadow-none p-2" href="#">
+<span class="material-symbols-outlined">swords</span>
+<span class="font-label-sm text-label-sm">BATTLES</span>
+</a>
+<!-- FAB - Centered and Raised -->
+<div class="relative -top-6">
+<button class="bg-primary-container text-on-primary-container border-[3px] border-on-surface w-16 h-16 flex items-center justify-center hard-shadow-sm active:translate-y-[4px] active:shadow-none transition-all">
+<span class="material-symbols-outlined scale-150">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container border-[2px] border-on-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-y-[2px] active:shadow-none p-2" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-sm text-label-sm">LEDGER</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-secondary-container transition-all active:translate-y-[2px] active:shadow-none p-2" href="#">
+<span class="material-symbols-outlined">shield</span>
+<span class="font-label-sm text-label-sm">HERO</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for rows
+        document.querySelectorAll('.border-b').forEach(row => {
+            row.addEventListener('click', () => {
+                row.style.backgroundColor = 'rgba(255, 192, 30, 0.1)';
+                setTimeout(() => {
+                    row.style.backgroundColor = 'transparent';
+                }, 150);
+            });
+        });
+    </script>
+</body></html>

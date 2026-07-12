@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quest Finance - Bills</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #fffdf7; /* Overriding dark mode for specific light-neo-brutalist request */
+            color: #14130f;
+        }
+        .tabular-nums {
+            font-variant-numeric: tabular-nums;
+        }
+        .neo-shadow {
+            box-shadow: 4px 4px 0px 0px #14130f;
+        }
+        .neo-shadow-active {
+            box-shadow: 0px 0px 0px 0px #14130f;
+            transform: translate(4px, 4px);
+        }
+        .btn-press:active {
+            box-shadow: 0px 0px 0px 0px #14130f;
+            transform: translate(4px, 4px);
+        }
+        /* Custom scrollbar for neo-brutalist aesthetic */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fffdf7;
+            border-left: 3px solid #14130f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #14130f;
+            border: 2px solid #fffdf7;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "error-container": "#93000a",
+                "on-primary-container": "#473588",
+                "on-background": "#14130f",
+                "tertiary-container": "#12a35a", /* Gain Green */
+                "primary": "#5b3df0", /* Brand Violet */
+                "surface-container-low": "#fffdf7",
+                "background": "#fffdf7",
+                "shadow-black": "#000000",
+                "on-tertiary-container": "#ffffff",
+                "tertiary": "#12a35a",
+                "surface-container-high": "#f0ede4",
+                "outline-variant": "#14130f",
+                "error": "#ffb4ab",
+                "on-surface": "#14130f",
+                "card-surface": "#fffdf7",
+                "secondary": "#efc137",
+                "on-surface-variant": "#14130f",
+                "on-primary": "#ffffff",
+                "ink": "#14130f",
+                "primary-container": "#5b3df0",
+                "loss-red": "#ff6a5c",
+                "paper": "#fffdf7",
+                "surface-container": "#fffdf7",
+                "outline": "#14130f"
+              },
+              "spacing": {
+                "xs": "4px",
+                "shadow-offset": "4px",
+                "xl": "40px",
+                "sm": "8px",
+                "lg": "24px",
+                "md": "16px",
+                "border-width": "3px",
+                "base": "4px",
+                "gutter": "20px"
+              },
+              "fontFamily": {
+                "headline-md": ["Space Grotesk"],
+                "amount-lg": ["Space Grotesk"],
+                "label-md": ["Space Grotesk"],
+                "body-md": ["Space Grotesk"],
+                "display": ["Space Grotesk"],
+                "mono-num": ["Space Grotesk"],
+                "headline-lg": ["Space Grotesk"]
+              },
+              "fontSize": {
+                "headline-md": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                "amount-lg": ["36px", {"lineHeight": "36px", "fontWeight": "700"}],
+                "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "display": ["40px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "mono-num": ["15px", {"lineHeight": "18px", "fontWeight": "600"}],
+                "headline-lg": ["28px", {"lineHeight": "31px", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-[#fffdf7] text-[#14130f] antialiased min-h-screen flex flex-col pb-24">
+<!-- Top AppBar (JSON Source of Truth) -->
+<header class="w-full top-0 sticky z-50 border-b-[3px] border-[#14130f] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] bg-[#fffdf7] flex justify-between items-center px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 border-[3px] border-[#14130f] bg-secondary flex items-center justify-center neo-shadow overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A pixel-art style character avatar for a finance application. The character is a small heroic knight wearing a violet cape and a golden helmet with a slit for eyes, rendered in a chunky 8-bit aesthetic with sharp edges and bold black outlines against a solid bright yellow background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCio2kkmKmWe7ITucIjoGZ5XlSU-dBRZm5eKYViGcj62hrVcdO_ZsLP0Dt1H9ThZvv2XW5MjoSRsI1kheKDW803lQpgF8Nn0L4EMAzzmLCBLWlhvDwn8b4QQGQZJ6RZWrokXWmY9i15yIBjOrtW_b8vtQvvF-hIk4NNu0o8xwmqEfpjpsJ2R9MBj93OxygArI2oqznn12kM456o7vb4p65UtXQHPcUs-V2LF5YeRq4bAN5px4GWPFyPsmGZ5FVK1ADlVcU0w5BIbpE"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-[#14130f]">QUEST FINANCE</h1>
+</div>
+<div class="flex items-center gap-2 bg-[#f0ede4] border-[3px] border-[#14130f] px-3 py-1 neo-shadow active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer">
+<span class="font-label-md text-label-md font-bold">1,250 COINS</span>
+<img alt="Coin" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida/AP1WRLsGtNvP848GwLjrP3pLw5t8f4FB2_ZlfGN65u3TRVytV8PlsL6kxwLwp8vqonlfPwAW5OYAnJdmJv8hKI-_AxR9QxcpI2wejWYo_V2B1gU5trtaD9mea6Ltzbxy0TPhmcSVhehrZfp-QSE-Bqx3HMeg15lrBujNhVSKTCoAQ0s44mX1dIPVsLdBtwXyPWgrfM66SI2GsqhCotgAmuYlcstChO3OP9emoxPGRSTuTR9r_CcRjVixn9oYLJE"/>
+</div>
+</header>
+<main class="flex-grow px-gutter pt-8 max-w-2xl mx-auto w-full">
+<!-- Header Section -->
+<div class="mb-8">
+<h2 class="font-display text-display uppercase leading-tight">FIXED BILLS</h2>
+<p class="font-body-md text-body-md text-on-surface-variant italic mt-1">These aren't battles — just keep them paid.</p>
+</div>
+<!-- Summary Card -->
+<div class="bg-primary text-white border-[3px] border-[#14130f] p-6 mb-8 neo-shadow relative overflow-hidden">
+<div class="absolute top-[-20px] right-[-20px] opacity-10">
+<span class="material-symbols-outlined text-[120px]">receipt_long</span>
+</div>
+<div class="relative z-10">
+<h3 class="font-label-md text-label-md uppercase tracking-widest opacity-90">DUE THIS MONTH</h3>
+<div class="font-amount-lg text-amount-lg tabular-nums mt-1 mb-4 flex items-baseline gap-1">
+<span class="text-2xl">₹</span>28,400
+                </div>
+<div class="flex flex-col sm:flex-row sm:items-center gap-4 border-t-[2px] border-white/20 pt-4 font-label-md text-label-md">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-tertiary"></div>
+<span>PAID ₹15,200</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-secondary"></div>
+<span>UPCOMING ₹13,200</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bill List -->
+<div class="space-y-4 mb-12">
+<!-- Rent Bill -->
+<div class="bg-white border-[3px] border-[#14130f] p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center neo-shadow transition-transform hover:translate-y-[-2px]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 border-[3px] border-[#14130f] bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">home</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md uppercase">RENT</h4>
+<p class="font-label-md text-label-md text-on-surface-variant">DUE 1 AUG</p>
+</div>
+</div>
+<div class="flex flex-row sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto mt-4 sm:mt-0 gap-2">
+<span class="font-headline-md text-headline-md tabular-nums">₹18,000<span class="text-sm font-normal">/mo.</span></span>
+<span class="bg-[#12a35a] text-white px-3 py-1 border-[2px] border-[#14130f] font-label-md text-label-md uppercase">PAID</span>
+</div>
+</div>
+<!-- Health Insurance -->
+<div class="bg-white border-[3px] border-[#14130f] p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center neo-shadow transition-transform hover:translate-y-[-2px]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 border-[3px] border-[#14130f] bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">shield</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md uppercase">HEALTH INSURANCE</h4>
+<p class="font-label-md text-label-md text-on-surface-variant">DUE 5 AUG</p>
+</div>
+</div>
+<div class="flex flex-row sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto mt-4 sm:mt-0 gap-2">
+<span class="font-headline-md text-headline-md tabular-nums">₹4,200<span class="text-sm font-normal">/mo.</span></span>
+<span class="bg-[#5b3df0] text-white px-3 py-1 border-[2px] border-[#14130f] font-label-md text-label-md uppercase">AUTOPAY</span>
+</div>
+</div>
+<!-- Electricity -->
+<div class="bg-white border-[3px] border-[#14130f] p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center neo-shadow transition-transform hover:translate-y-[-2px]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 border-[3px] border-[#14130f] bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">bolt</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md uppercase">ELECTRICITY</h4>
+<p class="font-label-md text-label-md text-on-surface-variant">DUE 12 AUG</p>
+</div>
+</div>
+<div class="flex flex-row sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto mt-4 sm:mt-0 gap-2">
+<span class="font-headline-md text-headline-md tabular-nums">₹2,800<span class="text-sm font-normal">/mo.</span></span>
+<span class="bg-secondary text-white px-3 py-1 border-[2px] border-[#14130f] font-label-md text-label-md uppercase">UPCOMING</span>
+</div>
+</div>
+<!-- Netflix -->
+<div class="bg-white border-[3px] border-[#14130f] p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center neo-shadow transition-transform hover:translate-y-[-2px]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 border-[3px] border-[#14130f] bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">play_circle</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md uppercase">NETFLIX</h4>
+<p class="font-label-md text-label-md text-on-surface-variant">DUE 15 AUG</p>
+</div>
+</div>
+<div class="flex flex-row sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto mt-4 sm:mt-0 gap-2">
+<span class="font-headline-md text-headline-md tabular-nums">₹649<span class="text-sm font-normal">/mo.</span></span>
+<span class="bg-[#5b3df0] text-white px-3 py-1 border-[2px] border-[#14130f] font-label-md text-label-md uppercase">AUTOPAY</span>
+</div>
+</div>
+<!-- Jio Postpaid -->
+<div class="bg-white border-[3px] border-[#14130f] p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center neo-shadow transition-transform hover:translate-y-[-2px]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 border-[3px] border-[#14130f] bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">phone_android</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md uppercase">JIO POSTPAID</h4>
+<p class="font-label-md text-label-md text-on-surface-variant">DUE 20 AUG</p>
+</div>
+</div>
+<div class="flex flex-row sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto mt-4 sm:mt-0 gap-2">
+<span class="font-headline-md text-headline-md tabular-nums">₹799<span class="text-sm font-normal">/mo.</span></span>
+<span class="bg-secondary text-white px-3 py-1 border-[2px] border-[#14130f] font-label-md text-label-md uppercase">UPCOMING</span>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-primary text-white border-[3px] border-[#14130f] py-5 font-headline-md text-headline-md neo-shadow uppercase tracking-widest btn-press mb-8">
+            + ADD A BILL
+        </button>
+<!-- Footer Note -->
+<div class="bg-[#f0ede4] border-[2px] border-dashed border-[#14130f] p-4 mb-20 text-center">
+<p class="font-body-md text-body-md italic text-on-surface-variant">
+                Fixed bills are excluded from your boss battles so a big obligation never counts as a loss.
+            </p>
+</div>
+</main>
+<!-- Bottom Nav Bar (JSON Source of Truth) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-24 bg-[#fffdf7] px-2 pb-safe border-t-[3px] border-[#14130f] shadow-[0px_-4px_0px_0px_rgba(0,0,0,1)]">
+<!-- HOME -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined text-3xl" data-icon="home">home</span>
+<span class="font-label-md text-[10px] mt-1">HOME</span>
+</a>
+<!-- BATTLES (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-primary font-bold border-[2px] border-primary p-2 shadow-[2px_2px_0px_0px_rgba(91,61,240,0.3)] transition-transform active:scale-95 bg-primary/5" href="#">
+<span class="material-symbols-outlined text-3xl" data-icon="swords" style="font-variation-settings: 'FILL' 1;">swords</span>
+<span class="font-label-md text-[10px] mt-1">BATTLES</span>
+</a>
+<!-- ADD (FAB) -->
+<div class="relative -top-6">
+<button class="w-16 h-16 bg-secondary border-[3px] border-[#14130f] flex items-center justify-center neo-shadow btn-press">
+<span class="material-symbols-outlined text-4xl text-[#14130f]" data-icon="add">add</span>
+</button>
+</div>
+<!-- LEDGER -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined text-3xl" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-md text-[10px] mt-1">LEDGER</span>
+</a>
+<!-- HERO -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined text-3xl" data-icon="person">person</span>
+<span class="font-label-md text-[10px] mt-1">HERO</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for coin counter
+        const coinCounter = document.querySelector('.neo-shadow');
+        if(coinCounter) {
+            coinCounter.addEventListener('click', () => {
+                coinCounter.classList.add('neo-shadow-active');
+                setTimeout(() => {
+                    coinCounter.classList.remove('neo-shadow-active');
+                }, 100);
+            });
+        }
+
+        // Bill item press effect
+        const bills = document.querySelectorAll('.neo-shadow');
+        bills.forEach(bill => {
+            bill.addEventListener('mousedown', () => {
+                bill.style.transform = 'translate(4px, 4px)';
+                bill.style.boxShadow = '0px 0px 0px 0px #14130f';
+            });
+            bill.addEventListener('mouseup', () => {
+                bill.style.transform = 'translate(0px, 0px)';
+                bill.style.boxShadow = '4px 4px 0px 0px #14130f';
+            });
+            bill.addEventListener('mouseleave', () => {
+                bill.style.transform = 'translate(0px, 0px)';
+                bill.style.boxShadow = '4px 4px 0px 0px #14130f';
+            });
+        });
+    </script>
+</body></html>

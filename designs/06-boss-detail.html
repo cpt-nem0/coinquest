@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fin-Knight: Boss Battle Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..900&family=Space+Grotesk:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5b3df0",
+                        "secondary": "#904d00",
+                        "surface": "#fffdf7",
+                        "on-surface": "#14130f",
+                        "outline": "#14130f",
+                        "primary-container": "#ffc01e",
+                        "success": "#12a35a",
+                        "danger": "#e23b2e",
+                        "surface-container": "#f0eded",
+                        "on-surface-variant": "#504533"
+                    },
+                    borderRadius: {
+                        "none": "0px",
+                        "DEFAULT": "0px"
+                    },
+                    spacing: {
+                        "pixel-unit": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px"
+                    },
+                    fontFamily: {
+                        "body-md": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"],
+                        "headline-xl": ["Space Grotesk"],
+                        "label-sm": ["JetBrains Mono"],
+                        "tabular": ["JetBrains Mono"]
+                    },
+                    boxShadow: {
+                        "retro": "4px 4px 0px 0px rgba(20, 19, 15, 1)",
+                        "retro-active": "0px 0px 0px 0px rgba(20, 19, 15, 1)"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hp-bar-segment {
+            width: 12px;
+            height: 24px;
+            border: 1px solid #14130f;
+            background-color: #12a35a;
+        }
+        .hp-bar-empty {
+            background-color: #e5e2e1;
+        }
+        .tabular-nums {
+            font-variant-numeric: tabular-nums;
+        }
+        body {
+            background-color: #fffdf7;
+            font-family: 'Space Grotesk', sans-serif;
+            color: #14130f;
+        }
+        .neo-card {
+            border: 3px solid #14130f;
+            box-shadow: 4px 4px 0px 0px rgba(20, 19, 15, 1);
+            background-color: white;
+            border-radius: 0 !important;
+        }
+        .active-press:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px 0px rgba(20, 19, 15, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface border-b-[3px] border-outline flex justify-between items-center px-4 py-3">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined font-bold text-on-surface hover:bg-surface-container p-1 active-press">arrow_back</button>
+<h1 class="font-headline-lg text-[20px] uppercase tracking-tighter font-bold">FOOD BOSS</h1>
+</div>
+<div class="bg-primary-container px-3 py-1 border-[3px] border-outline font-tabular font-bold shadow-[2px_2px_0px_0px_rgba(20,19,15,1)]">
+            ₹1,240 GP
+        </div>
+</header>
+<main class="mt-20 px-margin-mobile max-w-container-max mx-auto space-y-6">
+<!-- Hero Section: Boss Card -->
+<section class="neo-card p-6 flex flex-col items-center">
+<div class="w-full text-center mb-6">
+<div class="relative inline-block">
+<img class="w-48 h-48 object-contain pixelated mb-4" data-alt="A large, chunky 16-bit pixel art pizza monster sprite with glowing red eyes and multiple pepperoni-like spots, set against a dark purple background with a hard black border. The visual style is retro-arcade with high contrast and sharp jagged edges, evoking a classic RPG boss battle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXDTJLIKMeX1dVZUkHlsm39MyHNsKCXf1f8vqAq3mj-jMXZIKeTODt-oXXnLxCWsELCI_4LQ3WJWqgx2FvJmfFOVxb8HR4mZ-mTeHuhSYwF9ecMRgGIR81krD6buyu3V04vQLhdt4o6iMB9ARGTZtDmEuMf5EfYTEgzVD3Dt9iWbK-d0M3gAtGOGW9VW51vcwZXFT_QgKpg8H3WAxD0-xa1TrlPTo0g7I_nIUVz1lm8Ano-8FR5kZ7eD_s85KslU0wz7kjizu0DrE"/>
+<div class="absolute -top-2 -right-4 bg-danger text-white px-2 py-1 border-2 border-outline font-bold text-[12px] shadow-[2px_2px_0px_0px_rgba(20,19,15,1)]">LVL 42</div>
+</div>
+<h2 class="font-headline-xl text-[32px] tracking-tight uppercase font-extrabold mb-1">FOOD BOSS</h2>
+<p class="font-body-md text-on-surface-variant text-[14px]">The Gluttonous Budget-Eater</p>
+</div>
+<!-- HP Bar Section -->
+<div class="w-full space-y-3">
+<div class="flex justify-between font-tabular font-bold text-[14px] uppercase">
+<span>BOSS HP</span>
+<span>94.5%</span>
+</div>
+<div class="flex gap-1 overflow-hidden h-8 border-[3px] border-outline bg-surface-container p-1">
+<!-- Segmented Blocks -->
+<div class="hp-bar-segment"></div>
+<div class="hp-bar-segment"></div>
+<div class="hp-bar-segment"></div>
+<div class="hp-bar-segment"></div>
+<div class="hp-bar-segment"></div>
+<div class="hp-bar-segment"></div>
+<div class="hp-bar-segment"></div>
+<div class="hp-bar-segment"></div>
+<div class="hp-bar-segment"></div>
+<div class="hp-bar-segment"></div>
+<div class="hp-bar-segment"></div>
+<div class="hp-bar-segment"></div>
+<div class="hp-bar-segment"></div>
+<div class="hp-bar-segment"></div>
+<div class="hp-bar-segment"></div>
+<div class="hp-bar-segment hp-bar-empty"></div>
+<div class="hp-bar-segment hp-bar-empty"></div>
+<div class="hp-bar-segment hp-bar-empty"></div>
+</div>
+<div class="flex justify-between items-baseline">
+<span class="font-tabular font-bold text-[18px]">₹12,480 <span class="text-[12px] font-normal opacity-70">of ₹13,200 median</span></span>
+<span class="font-headline-lg text-success text-[16px] font-bold uppercase tracking-tighter">YOU'RE WINNING — ₹720 TO SPARE</span>
+</div>
+</div>
+</section>
+<!-- Actions -->
+<button class="w-full bg-primary text-white py-4 font-headline-lg text-[18px] font-extrabold uppercase tracking-widest border-[3px] border-outline shadow-retro active-press transition-all">
+            SET A LOWER TARGET
+        </button>
+<!-- Transactions Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-lg text-[20px] uppercase font-bold tracking-tight">ATTACKS THIS MONTH</h3>
+<span class="font-body-md text-[12px] font-bold uppercase opacity-60">5 RECENT MOVES</span>
+</div>
+<div class="neo-card bg-white">
+<div class="divide-y divide-outline">
+<!-- Row 1 -->
+<div class="flex justify-between items-center p-4 hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]">delivery_dining</span>
+<span class="font-bold text-[16px] tracking-tight">Swiggy</span>
+</div>
+<span class="font-tabular text-danger font-bold text-[16px]">−₹487.00</span>
+</div>
+<!-- Row 2 -->
+<div class="flex justify-between items-center p-4 hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+<span class="font-bold text-[16px] tracking-tight">Zomato</span>
+</div>
+<span class="font-tabular text-danger font-bold text-[16px]">−₹342.00</span>
+</div>
+<!-- Row 3 -->
+<div class="flex justify-between items-center p-4 hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]">local_cafe</span>
+<span class="font-bold text-[16px] tracking-tight">Starbucks</span>
+</div>
+<span class="font-tabular text-danger font-bold text-[16px]">−₹415.00</span>
+</div>
+<!-- Row 4 -->
+<div class="flex justify-between items-center p-4 hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+<span class="font-bold text-[16px] tracking-tight">BigBasket</span>
+</div>
+<span class="font-tabular text-danger font-bold text-[16px]">−₹1,340.00</span>
+</div>
+<!-- Row 5 -->
+<div class="flex justify-between items-center p-4 hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]">local_pizza</span>
+<span class="font-bold text-[16px] tracking-tight">Dominos</span>
+</div>
+<span class="font-tabular text-danger font-bold text-[16px]">−₹640.00</span>
+</div>
+</div>
+</div>
+<p class="text-center font-body-md text-[12px] uppercase font-bold py-4 opacity-70">
+                Beat the boss = finish under your median.
+            </p>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white border-t-[3px] border-outline h-20 flex justify-around items-center px-2">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center w-16 text-on-surface-variant active-press" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-label-sm text-[10px] mt-1 font-bold">HOME</span>
+</a>
+<!-- Battles (Active) -->
+<a class="flex flex-col items-center justify-center w-16 h-[80%] bg-primary text-white border-[3px] border-outline shadow-[2px_2px_0px_0px_rgba(20,19,15,1)] active-press" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">swords</span>
+<span class="font-label-sm text-[10px] mt-1 font-bold">BATTLES</span>
+</a>
+<!-- FAB Plus -->
+<div class="relative -top-6">
+<button class="w-16 h-16 bg-primary-container border-[3px] border-outline shadow-retro active-press flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px] font-bold">add</span>
+</button>
+</div>
+<!-- Ledger -->
+<a class="flex flex-col items-center justify-center w-16 text-on-surface-variant active-press" href="#">
+<span class="material-symbols-outlined text-[24px]">menu_book</span>
+<span class="font-label-sm text-[10px] mt-1 font-bold">LEDGER</span>
+</a>
+<!-- Hero -->
+<a class="flex flex-col items-center justify-center w-16 text-on-surface-variant active-press" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="font-label-sm text-[10px] mt-1 font-bold">HERO</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: HP Bar animation simulation on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const segments = document.querySelectorAll('.hp-bar-segment:not(.hp-bar-empty)');
+            segments.forEach((seg, index) => {
+                seg.style.opacity = '0';
+                setTimeout(() => {
+                    seg.style.opacity = '1';
+                }, index * 50);
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quest Finance - Create Your Hero</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#6251a5",
+                        "card-surface": "#1f1e18",
+                        "surface-tint": "#cbbeff",
+                        "inverse-on-surface": "#32302c",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#363530",
+                        "on-tertiary-container": "#004e2b",
+                        "background": "#14130f",
+                        "primary-fixed": "#e7deff",
+                        "on-secondary-fixed-variant": "#594400",
+                        "on-surface-variant": "#cac4d2",
+                        "primary-fixed-dim": "#cbbeff",
+                        "on-tertiary": "#00391e",
+                        "tertiary": "#5ce597",
+                        "on-primary": "#332074",
+                        "on-primary-fixed": "#1e015f",
+                        "primary": "#d1c4ff",
+                        "tertiary-fixed-dim": "#56df92",
+                        "surface-dim": "#14130f",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#363530",
+                        "on-tertiary-fixed-variant": "#00522e",
+                        "on-tertiary-fixed": "#00210f",
+                        "surface-container-lowest": "#0f0e0a",
+                        "shadow-black": "#000000",
+                        "outline-variant": "#484551",
+                        "secondary-container": "#c29800",
+                        "inverse-surface": "#e7e2db",
+                        "ink": "#f7f3e8",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#75fcac",
+                        "tertiary-container": "#3ac87e",
+                        "on-background": "#e7e2db",
+                        "on-surface": "#e7e2db",
+                        "primary-container": "#b6a4ff",
+                        "paper": "#14130f",
+                        "on-primary-fixed-variant": "#4a398c",
+                        "loss-red": "#ff6a5c",
+                        "surface-container-high": "#2b2a25",
+                        "secondary": "#efc137",
+                        "on-secondary-container": "#433300",
+                        "on-primary-container": "#473588",
+                        "surface-container-low": "#1d1c17",
+                        "deep-surface": "#0d0c09",
+                        "surface": "#14130f",
+                        "secondary-fixed-dim": "#efc137",
+                        "on-secondary": "#3e2e00",
+                        "surface-bright": "#3b3934",
+                        "error-container": "#93000a",
+                        "surface-container": "#21201b",
+                        "secondary-fixed": "#ffdf92",
+                        "outline": "#938f9c",
+                        "on-secondary-fixed": "#241a00",
+                        "arcade-violet": "#5b3df0"
+                    },
+                    "borderRadius": {
+                        "none": "0px",
+                        "DEFAULT": "0px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "border-width": "3px",
+                        "sm": "8px",
+                        "shadow-offset": "4px",
+                        "md": "16px",
+                        "base": "4px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display": ["Space Grotesk"],
+                        "body-md": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "amount-lg": ["Space Grotesk"],
+                        "mono-num": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "label-md": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "display": ["40px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["28px", {"lineHeight": "31px", "fontWeight": "700"}],
+                        "amount-lg": ["36px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "mono-num": ["15px", {"lineHeight": "18px", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #fffdf7; /* Light Mode override per prompt */
+            color: #14130f;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .neo-border {
+            border: 3px solid #000000;
+        }
+        .neo-shadow {
+            box-shadow: 4px 4px 0px 0px #000000;
+        }
+        .neo-press:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px 0px #000000;
+        }
+        input:focus {
+            outline: none;
+            border-color: #5b3df0 !important;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .selected-avatar {
+            border-color: #5b3df0 !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center">
+<!-- Top AppBar (Simplified Onboarding Version) -->
+<header class="w-full top-0 sticky z-50 border-b-[3px] border-black bg-[#fffdf7] px-gutter py-4 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-bold text-black">QUEST FINANCE</span>
+</div>
+<div class="flex items-center gap-2 bg-white neo-border px-3 py-1">
+<img alt="Gold Coin" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida/AP1WRLsGtNvP848GwLjrP3pLw5t8f4FB2_ZlfGN65u3TRVytV8PlsL6kxwLwp8vqonlfPwAW5OYAnJdmJv8hKI-_AxR9QxcpI2wejWYo_V2B1gU5trtaD9mea6Ltzbxy0TPhmcSVhehrZfp-QSE-Bqx3HMeg15lrBujNhVSKTCoAQ0s44mX1dIPVsLdBtwXyPWgrfM66SI2GsqhCotgAmuYlcstChO3OP9emoxPGRSTuTR9r_CcRjVixn9oYLJE"/>
+<span class="font-label-md text-label-md">0 COINS</span>
+</div>
+</header>
+<main class="w-full max-w-lg px-gutter py-12 flex flex-col gap-10">
+<!-- Header Section -->
+<div class="flex flex-col gap-2">
+<p class="font-label-md text-label-md text-arcade-violet uppercase tracking-widest">Step 2 of 2</p>
+<h1 class="font-display text-display text-black uppercase">CREATE YOUR HERO</h1>
+</div>
+<!-- Avatar Selection -->
+<section class="flex flex-col gap-4">
+<h2 class="font-headline-md text-headline-md uppercase">CHOOSE AN AVATAR</h2>
+<div class="grid grid-cols-3 gap-4">
+<!-- Avatar 1 (Selected) -->
+<button class="relative aspect-square neo-border neo-shadow bg-white neo-press selected-avatar group overflow-hidden" onclick="selectAvatar(this)">
+<div class="absolute inset-0 bg-arcade-violet/5 group-hover:bg-arcade-violet/10"></div>
+<img class="w-full h-full object-cover p-2" data-alt="A chunky pixel-art character portrait of a stoic warrior wearing a silver helmet with a violet plume. The style is classic 16-bit arcade with sharp edges, limited color palette, and high contrast against a light cream background. Neo-brutalist aesthetic with no gradients." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJOgB699ON2n0RsVXbpDYsymPJBw7mAoofkEv8teuruUyVL_pry7VCmYMwj9DYusnPdUOJClIrXZgNJJhtq10quIJ5he4ScIutP3DbXdd5pYmVO_NW1nf9uWF1JtcLCcERm-e9g-0FvhKOAZFi71MTk8kyTisqMGHPVogx1W5deh5VwAJZnOlHrc-y53rsolKMbcwW0586AaK_ViGNVV-K3ISbWtZc4rO5rTwEP1pHeHYq4oEGp0IEATI4oH0rUsVHKaJUSWKRUi4"/>
+<div class="absolute top-1 right-1 bg-arcade-violet text-white neo-border w-6 h-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+</button>
+<!-- Avatar 2 -->
+<button class="relative aspect-square neo-border neo-shadow bg-white neo-press group overflow-hidden" onclick="selectAvatar(this)">
+<img class="w-full h-full object-cover p-2" data-alt="A chunky pixel-art character portrait of a mysterious mage wearing a deep violet hooded robe and glowing blue eyes. The style is 16-bit retro arcade, featuring sharp pixelated borders and bright digital colors on a cream background. Neo-brutalist digital art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMHNNvSezOV6H61FqkCaudXH7Dca2Vdqpr6_MMkKkW1BImxlaYon1XfoJUS95tieA12CO30PrzMY7Pz1Nd3ZvAdaLUb2ZggsD3inw0M3OQN3a255IHUzJ9K5eqzezVMrXSknriH4EN5rlJgoQjL5jurIA8GaC5EWLRw_Xmw6mr-sCxP-zpYzeLB-RUxsajGd8aNiMJcbr8wY9tJSyRjAbYRekrCcmib5mXvPL8oQKM5wIN6OFU1FQ8JhZ5DLRQz1wyECxXuJOXE8E"/>
+</button>
+<!-- Avatar 3 -->
+<button class="relative aspect-square neo-border neo-shadow bg-white neo-press group overflow-hidden" onclick="selectAvatar(this)">
+<img class="w-full h-full object-cover p-2" data-alt="A chunky pixel-art character portrait of a nimble rogue with a green bandana and leather armor. The art style is crisp 16-bit arcade pixel art with high-contrast outlines and a limited palette. Digital retro console aesthetics on a flat cream background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjjTW_2W114ZmaeWmvgJwFBCbd-eINAo7HlL_ASLMaplMv6HO1Jerm8HByfdUegH0YHMhnVEmDUQVRZ_tfqZruSD4mQ0S6Mj-1rn9AOBhvWl_U7r1p-NQTINt-UzDtNK6jPLXbEDJesW_mjqHoMNpCJB25t8JPjHjvQQkLLDMH6JF4WroC7M2gHk8fxu4pxf4XdCuhm-qpKrt3tEKM928j-k2gjVV8NVjZ1ekcTbski-pKg68gJfbGdkM1fHJUyJC140tSRMJ1fjI"/>
+</button>
+</div>
+</section>
+<!-- Hero Name Input -->
+<section class="flex flex-col gap-4">
+<label class="font-headline-md text-headline-md uppercase">HERO NAME</label>
+<input class="w-full neo-border neo-shadow h-16 px-6 font-headline-md text-headline-md uppercase placeholder-gray-400 bg-white focus:bg-white transition-all" placeholder="PLAYER_1" type="text"/>
+</section>
+<!-- Currency Selector -->
+<section class="flex flex-col gap-4">
+<label class="font-headline-md text-headline-md uppercase">PICK YOUR CURRENCY</label>
+<div class="flex flex-col neo-border bg-white neo-shadow">
+<div class="flex items-center justify-between p-4 bg-arcade-violet text-white">
+<span class="font-headline-md text-headline-md">₹ INR</span>
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+<div class="divide-y-2 divide-black">
+<button class="w-full text-left p-4 font-headline-md text-headline-md hover:bg-gray-100">$ USD</button>
+<button class="w-full text-left p-4 font-headline-md text-headline-md hover:bg-gray-100">€ EUR</button>
+<button class="w-full text-left p-4 font-headline-md text-headline-md hover:bg-gray-100">£ GBP</button>
+</div>
+</div>
+</section>
+<!-- Budget Input -->
+<section class="flex flex-col gap-4">
+<label class="font-headline-md text-headline-md uppercase">SET A MONTHLY BUDGET</label>
+<div class="relative">
+<input class="w-full neo-border neo-shadow h-16 px-6 font-amount-lg text-amount-lg bg-white text-black tabular-nums" type="text" value="₹50,000"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-1">
+<button class="material-symbols-outlined text-black hover:text-arcade-violet transition-colors">keyboard_arrow_up</button>
+<button class="material-symbols-outlined text-black hover:text-arcade-violet transition-colors">keyboard_arrow_down</button>
+</div>
+</div>
+<p class="font-label-md text-label-md text-gray-500 uppercase">This is your starting 'HP' for the month.</p>
+</section>
+<!-- Primary Action -->
+<div class="pt-6 pb-12">
+<button class="w-full h-20 bg-arcade-violet neo-border neo-shadow neo-press flex items-center justify-center gap-4 group">
+<span class="text-white font-headline-lg text-headline-lg uppercase">ENTER THE ARENA</span>
+<span class="material-symbols-outlined text-white text-4xl group-hover:translate-x-2 transition-transform">swords</span>
+</button>
+</div>
+</main>
+<script>
+        function selectAvatar(element) {
+            // Remove selection from all
+            document.querySelectorAll('button[onclick="selectAvatar(this)"]').forEach(btn => {
+                btn.classList.remove('selected-avatar');
+                const check = btn.querySelector('.absolute.top-1');
+                if (check) check.remove();
+            });
+            
+            // Add selection to clicked
+            element.classList.add('selected-avatar');
+            
+            // Add checkmark
+            const checkmark = document.createElement('div');
+            checkmark.className = 'absolute top-1 right-1 bg-arcade-violet text-white neo-border w-6 h-6 flex items-center justify-center';
+            checkmark.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span>';
+            element.appendChild(checkmark);
+        }
+
+        // Budget formatting logic (mockup)
+        const budgetInput = document.querySelector('input[value="₹50,000"]');
+        budgetInput.addEventListener('input', (e) => {
+            // Clean non-numeric except symbols
+            let val = e.target.value.replace(/[^0-9]/g, '');
+            if (val) {
+                e.target.value = '₹' + parseInt(val).toLocaleString('en-IN');
+            }
+        });
+    </script>
+</body></html>
