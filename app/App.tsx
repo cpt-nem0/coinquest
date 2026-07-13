@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -24,6 +24,11 @@ import { useStore } from './store';
 export default function App() {
   const [tab, setTab] = useState<TabKey>('home');
   const player = useStore((s) => s.player);
+  const hydrate = useStore((s) => s.hydrate);
+  const hydrated = useStore((s) => s.hydrated);
+  useEffect(() => {
+    hydrate();
+  }, [hydrate]);
   const [fontsLoaded] = useFonts({
     SpaceGrotesk_400Regular,
     SpaceGrotesk_500Medium,
@@ -32,7 +37,7 @@ export default function App() {
     JetBrainsMono_700Bold,
   });
 
-  if (!fontsLoaded) return <View style={{ flex: 1, backgroundColor: colors.paper }} />;
+  if (!fontsLoaded || !hydrated) return <View style={{ flex: 1, backgroundColor: colors.paper }} />;
 
   return (
     <SafeAreaProvider>
