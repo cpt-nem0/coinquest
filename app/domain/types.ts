@@ -3,6 +3,8 @@
 export type Direction = 'debit' | 'credit';
 export type SourceKind = 'gmail' | 'manual' | 'share' | 'sms' | 'aa';
 export type TxnStatus = 'confirmed' | 'needs_review';
+/** The gamified "worth it?" reflection on a spend. */
+export type WorthRating = 'worth' | 'meh' | 'regret';
 
 /** A raw captured message from any source, before parsing. */
 export interface RawMessage {
@@ -27,6 +29,7 @@ export interface Transaction {
   accountTail?: string; // e.g. "1234"
   refId?: string;
   status: TxnStatus; // needs_review when we're not confident (e.g. unknown merchant)
+  worth?: WorthRating; // set when the user reviews it in the Encounter
 }
 
 export interface ParseResult {

@@ -18,16 +18,8 @@ import HomeScreen from './screens/HomeScreen';
 import LedgerScreen from './screens/LedgerScreen';
 import BattlesScreen from './screens/BattlesScreen';
 import HeroScreen from './screens/HeroScreen';
+import EncounterScreen from './screens/EncounterScreen';
 import { useStore } from './store';
-
-function Placeholder({ label }: { label: string }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-      <Text style={{ fontFamily: fonts.display, fontSize: 24, color: colors.ink }}>{label}</Text>
-      <Text style={{ fontFamily: fonts.body, fontSize: 14, color: colors.inkSoft, marginTop: 6 }}>Coming soon</Text>
-    </View>
-  );
-}
 
 export default function App() {
   const [tab, setTab] = useState<TabKey>('home');
@@ -67,7 +59,7 @@ export default function App() {
           {tab === 'ledger' && <LedgerScreen />}
           {tab === 'battles' && <BattlesScreen />}
           {tab === 'hero' && <HeroScreen />}
-          {tab === 'add' && <Placeholder label="Log a spend" />}
+          {tab === 'add' && <EncounterScreen />}
         </View>
 
         <TabBar active={tab} onChange={setTab} />

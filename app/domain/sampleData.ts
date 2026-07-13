@@ -48,6 +48,9 @@ const ENTRIES: Entry[] = [
   ['Apollo Pharmacy', 780, '2026-07-05', 'd'],
   ['Jio Prepaid', 399, '2026-07-08', 'd'],
   ['Electricity', 1620, '2026-07-03', 'd'],
+  // unknown merchants → parser flags needs_review → surface in the Encounter
+  ['QwikMart Retail', 640, '2026-07-11', 'd'],
+  ['Cafe Mocha', 280, '2026-07-13', 'd'],
 ];
 
 function ddmmyy(iso: string): string {
