@@ -8,8 +8,8 @@ export default function PixelCoin({ size = 28, style }: { size?: number; style?:
   return (
     <Image
       source={COIN}
-      style={[{ width: size, height: size, resizeMode: 'contain' }, style]}
-      // keep crisp pixels when scaling
+      resizeMode="contain"
+      style={[{ width: size, height: size }, style]}
       fadeDuration={0}
     />
   );
