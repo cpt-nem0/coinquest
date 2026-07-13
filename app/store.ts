@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { Transaction, WorthRating } from './domain/types';
 import { parseAll } from './domain/parser';
 import { SAMPLE_MESSAGES } from './domain/sampleData';
-import { initDb, getAllTransactions, saveTransactions, updateTransaction, getKV, setKV } from './db';
+import { loadPersisted, savePersisted } from './persist';
 
 export const REVIEW_REWARD_COINS = 20;
 
@@ -26,7 +26,7 @@ interface AppState {
   currency: string;
   player: Player;
   hydrated: boolean;
-  /** Load from SQLite (seed from the sample corpus on first run). Safe on web (in-memory). */
+  /** Load from AsyncStorage (seed from the sample corpus on first run). */
   hydrate: () => Promise<void>;
   /** Confirm a reviewed spend: set category + worth, mark confirmed, award coins. Persists. */
   reviewTransaction: (id: string, categoryId: string, worth: WorthRating) => void;
@@ -40,36 +40,31 @@ export const useStore = create<AppState>((set, get) => ({
   hydrated: false,
 
   hydrate: async () => {
-    try {
-      await initDb();
-      let txns = await getAllTransactions();
-      if (!txns.length) {
-        txns = seedTransactions();
-        await saveTransactions(txns);
-      }
-      const coins = await getKV('coins');
+    const saved = await loadPersisted();
+    if (saved && saved.transactions?.length) {
+      console.log('[coinquest] loaded', saved.transactions.length, 'txns, coins =', saved.coins);
       set((s) => ({
-        transactions: txns,
-        player: { ...s.player, coins: coins != null ? Number(coins) : s.player.coins },
+        transactions: saved.transactions,
+        player: { ...s.player, coins: saved.coins ?? s.player.coins },
         hydrated: true,
       }));
-    } catch {
-      // DB unavailable (e.g. web) → in-memory sample so the app still works
-      set({ transactions: seedTransactions(), hydrated: true });
+    } else {
+      const txns = seedTransactions();
+      await savePersisted({ transactions: txns, coins: DEFAULT_PLAYER.coins });
+      console.log('[coinquest] seeded', txns.length, 'txns');
+      set({ transactions: txns, hydrated: true });
     }
   },
 
   reviewTransaction: (id, categoryId, worth) => {
-    set((state) => {
-      const transactions = state.transactions.map((t) =>
-        t.id === id ? { ...t, categoryId, worth, status: 'confirmed' as const } : t
-      );
-      const player = { ...state.player, coins: state.player.coins + REVIEW_REWARD_COINS };
-      // write-through (fire-and-forget; no-op on web)
-      const updated = transactions.find((t) => t.id === id);
-      if (updated) updateTransaction(updated);
-      setKV('coins', String(player.coins));
-      return { transactions, player };
-    });
+    const state = get();
+    const transactions = state.transactions.map((t) =>
+      t.id === id ? { ...t, categoryId, worth, status: 'confirmed' as const } : t
+    );
+    const player = { ...state.player, coins: state.player.coins + REVIEW_REWARD_COINS };
+    set({ transactions, player });
+    savePersisted({ transactions, coins: player.coins }).then(() =>
+      console.log('[coinquest] persisted; coins =', player.coins)
+    );
   },
 }));
