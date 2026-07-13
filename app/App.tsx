@@ -16,6 +16,9 @@ import NeoBox from './components/NeoBox';
 import TabBar, { TabKey } from './components/TabBar';
 import HomeScreen from './screens/HomeScreen';
 import LedgerScreen from './screens/LedgerScreen';
+import BattlesScreen from './screens/BattlesScreen';
+import HeroScreen from './screens/HeroScreen';
+import { useStore } from './store';
 
 function Placeholder({ label }: { label: string }) {
   return (
@@ -27,7 +30,8 @@ function Placeholder({ label }: { label: string }) {
 }
 
 export default function App() {
-  const [tab, setTab] = useState<TabKey>('ledger');
+  const [tab, setTab] = useState<TabKey>('home');
+  const player = useStore((s) => s.player);
   const [fontsLoaded] = useFonts({
     SpaceGrotesk_400Regular,
     SpaceGrotesk_500Medium,
@@ -43,24 +47,26 @@ export default function App() {
       <SafeAreaView style={{ flex: 1, backgroundColor: colors.paper }} edges={['top', 'bottom']}>
         <StatusBar style="dark" />
 
-        {/* shared top chrome: coins + level */}
+        {/* shared top chrome: coins + level (from store) */}
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: space.md, paddingVertical: space.sm }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
             <PixelCoin size={30} />
-            <Text style={{ fontFamily: fonts.money, fontSize: 18, color: colors.ink, fontVariant: ['tabular-nums'] }}>1,250</Text>
+            <Text style={{ fontFamily: fonts.money, fontSize: 18, color: colors.ink, fontVariant: ['tabular-nums'] }}>
+              {player.coins.toLocaleString('en-IN')}
+            </Text>
             <Text style={{ fontFamily: fonts.label, fontSize: 13, letterSpacing: 1, color: colors.inkSoft, textTransform: 'uppercase' }}>coins</Text>
           </View>
           <NeoBox offset={0} contentStyle={{ paddingHorizontal: 10, paddingVertical: 4 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: colors.ink }}>LVL 12</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: colors.ink }}>LVL {player.level}</Text>
           </NeoBox>
         </View>
 
         {/* active screen */}
         <View style={{ flex: 1 }}>
-          {tab === 'home' && <HomeScreen />}
+          {tab === 'home' && <HomeScreen onNavigate={setTab} />}
           {tab === 'ledger' && <LedgerScreen />}
-          {tab === 'battles' && <Placeholder label="Battles" />}
-          {tab === 'hero' && <Placeholder label="Hero" />}
+          {tab === 'battles' && <BattlesScreen />}
+          {tab === 'hero' && <HeroScreen />}
           {tab === 'add' && <Placeholder label="Log a spend" />}
         </View>
 

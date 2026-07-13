@@ -4,8 +4,7 @@ import { colors, fonts, space } from '../theme';
 import NeoBox from '../components/NeoBox';
 import Chip from '../components/Chip';
 import MoneyText from '../components/MoneyText';
-import { parseAll } from '../domain/parser';
-import { SAMPLE_MESSAGES } from '../domain/sampleEmails';
+import { useStore } from '../store';
 import { CATEGORY_BY_ID } from '../domain/categories';
 import { Transaction } from '../domain/types';
 
@@ -83,8 +82,8 @@ function Row({ t }: { t: Transaction }) {
 }
 
 export default function LedgerScreen() {
+  const txns = useStore((s) => s.transactions);
   const { groups, totalOut } = useMemo(() => {
-    const txns = parseAll(SAMPLE_MESSAGES).sort((a, b) => b.ts - a.ts);
     const totalOut = txns.filter((t) => t.direction === 'debit').reduce((s, t) => s + t.amountMinor, 0);
     const map = new Map<string, Transaction[]>();
     for (const t of txns) {
@@ -93,7 +92,7 @@ export default function LedgerScreen() {
     }
     const groups = [...map.entries()].map(([, ts]) => ({ label: dayLabel(ts[0].ts), txns: ts }));
     return { groups, totalOut };
-  }, []);
+  }, [txns]);
 
   return (
     <ScrollView contentContainerStyle={{ padding: space.md, paddingBottom: 40, gap: space.md }}>
@@ -104,7 +103,7 @@ export default function LedgerScreen() {
 
       <NeoBox style={{ alignSelf: 'stretch' }} contentStyle={{ padding: space.md, gap: 4 }}>
         <Text style={{ fontFamily: fonts.label, fontSize: 13, letterSpacing: 1, color: colors.inkSoft, textTransform: 'uppercase' }}>
-          Total out (sample)
+          Total out (all)
         </Text>
         <MoneyText amountMinor={totalOut} size={34} color={colors.ink} />
       </NeoBox>
@@ -123,7 +122,7 @@ export default function LedgerScreen() {
       ))}
 
       <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.inkSoft, textAlign: 'center', marginTop: 6 }}>
-        Parsed on-device from {SAMPLE_MESSAGES.length} sample messages · P1
+        {txns.length} transactions · parsed on-device · P1
       </Text>
     </ScrollView>
   );
