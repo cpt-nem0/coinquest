@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, Pressable } from 'react-native';
+import { View, Text, ScrollView, Pressable, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, fonts, space } from '../theme';
 import NeoBox from '../components/NeoBox';
@@ -7,11 +7,8 @@ import SegmentedBar from '../components/SegmentedBar';
 import MoneyText from '../components/MoneyText';
 import { useStore } from '../store';
 import { homeSummary, healthColor } from '../domain/engines';
+import { bossIcon } from '../domain/bossIcons';
 import { TabKey } from '../components/TabBar';
-
-const BOSS_EMOJI: Record<string, string> = {
-  food: '🍔', shopping: '🛍️', transport: '🚕', groceries: '🛒', entertainment: '🎬', health: '💊', cosmetics: '💄',
-};
 
 function H3({ children, color }: { children: React.ReactNode; color?: string }) {
   return <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: color ?? colors.ink }}>{children}</Text>;
@@ -85,8 +82,12 @@ export default function HomeScreen({ onNavigate }: { onNavigate?: (t: TabKey) =>
                 Typical <MoneyText amountMinor={boss.medianMinor} size={12} /> (3-mo median)
               </Text>
             </View>
-            <View style={{ width: 56, height: 56, borderWidth: 3, borderColor: colors.ink, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.surfaceLow }}>
-              <Text style={{ fontSize: 28 }}>{BOSS_EMOJI[boss.categoryId] ?? '👾'}</Text>
+            <View style={{ width: 56, height: 56, borderWidth: 3, borderColor: colors.ink, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.surfaceLow, overflow: 'hidden' }}>
+              {bossIcon(boss.categoryId) ? (
+                <Image source={bossIcon(boss.categoryId)} style={{ width: 52, height: 52 }} resizeMode="cover" />
+              ) : (
+                <Text style={{ fontSize: 28 }}>👾</Text>
+              )}
             </View>
           </View>
           <View style={{ backgroundColor: bossWinning ? 'rgba(18,163,90,0.12)' : 'rgba(232,140,0,0.12)', borderLeftWidth: 4, borderLeftColor: bossColor, padding: 10 }}>

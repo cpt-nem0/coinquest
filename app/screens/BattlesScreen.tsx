@@ -1,14 +1,11 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Image } from 'react-native';
 import { colors, fonts, space } from '../theme';
 import NeoBox from '../components/NeoBox';
 import MoneyText from '../components/MoneyText';
 import { useStore } from '../store';
 import { computeBosses, Boss } from '../domain/engines';
-
-const BOSS_EMOJI: Record<string, string> = {
-  food: '🍔', shopping: '🛍️', transport: '🚕', groceries: '🛒', entertainment: '🎬', health: '💊', cosmetics: '💄',
-};
+import { bossIcon } from '../domain/bossIcons';
 
 function HpBar({ ratio, color }: { ratio: number; color: string }) {
   const N = 16;
@@ -34,8 +31,12 @@ function BossCard({ b }: { b: Boss }) {
     <NeoBox bg={colors.white} style={{ alignSelf: 'stretch' }} contentStyle={{ padding: space.md, gap: space.md }}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14, flex: 1, minWidth: 0 }}>
-          <View style={{ width: 56, height: 56, borderWidth: 2, borderColor: colors.ink, backgroundColor: colors.surfaceHigh, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ fontSize: 28 }}>{BOSS_EMOJI[b.categoryId] ?? '👾'}</Text>
+          <View style={{ width: 56, height: 56, borderWidth: 2, borderColor: colors.ink, backgroundColor: colors.surfaceHigh, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+            {bossIcon(b.categoryId) ? (
+              <Image source={bossIcon(b.categoryId)} style={{ width: 54, height: 54 }} resizeMode="cover" />
+            ) : (
+              <Text style={{ fontSize: 28 }}>👾</Text>
+            )}
           </View>
           <View style={{ flex: 1, minWidth: 0 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: 16, textTransform: 'uppercase', color: colors.ink }}>{b.name} Boss</Text>
