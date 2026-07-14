@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
@@ -19,10 +20,12 @@ import LedgerScreen from './screens/LedgerScreen';
 import BattlesScreen from './screens/BattlesScreen';
 import HeroScreen from './screens/HeroScreen';
 import AddScreen from './screens/AddScreen';
+import SettingsScreen from './screens/SettingsScreen';
 import { useStore } from './store';
 
 export default function App() {
   const [tab, setTab] = useState<TabKey>('home');
+  const [showSettings, setShowSettings] = useState(false);
   const player = useStore((s) => s.player);
   const hydrate = useStore((s) => s.hydrate);
   const hydrated = useStore((s) => s.hydrated);
@@ -53,9 +56,16 @@ export default function App() {
             </Text>
             <Text style={{ fontFamily: fonts.label, fontSize: 13, letterSpacing: 1, color: colors.inkSoft, textTransform: 'uppercase' }}>coins</Text>
           </View>
-          <NeoBox offset={0} contentStyle={{ paddingHorizontal: 10, paddingVertical: 4 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: colors.ink }}>LVL {player.level}</Text>
-          </NeoBox>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <NeoBox offset={0} contentStyle={{ paddingHorizontal: 10, paddingVertical: 4 }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: colors.ink }}>LVL {player.level}</Text>
+            </NeoBox>
+            <Pressable onPress={() => setShowSettings(true)} hitSlop={8}>
+              <NeoBox offset={0} contentStyle={{ width: 34, height: 34, alignItems: 'center', justifyContent: 'center' }}>
+                <Ionicons name="settings-outline" size={18} color={colors.ink} />
+              </NeoBox>
+            </Pressable>
+          </View>
         </View>
 
         {/* active screen */}
@@ -68,6 +78,12 @@ export default function App() {
         </View>
 
         <TabBar active={tab} onChange={setTab} />
+
+        {showSettings && (
+          <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: colors.paper }}>
+            <SettingsScreen onClose={() => setShowSettings(false)} />
+          </View>
+        )}
       </SafeAreaView>
     </SafeAreaProvider>
   );

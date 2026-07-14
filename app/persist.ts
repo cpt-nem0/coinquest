@@ -12,6 +12,8 @@ export interface Persisted {
   transactions: Transaction[];
   coins: number;
   quests?: Quest[];
+  budgetMinor?: number;
+  currency?: string;
 }
 
 export async function loadPersisted(): Promise<Persisted | null> {

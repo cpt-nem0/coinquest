@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { Transaction, WorthRating, Quest } from './domain/types';
 import { parseAll } from './domain/parser';
 import { SAMPLE_MESSAGES } from './domain/sampleData';
-import { loadPersisted, savePersisted } from './persist';
+import { loadPersisted, savePersisted, clearPersisted } from './persist';
 
 export const REVIEW_REWARD_COINS = 20;
 
@@ -37,12 +37,21 @@ interface AppState {
   reviewTransaction: (id: string, categoryId: string, worth: WorthRating) => void;
   addTransaction: (t: Transaction) => void;
   toggleQuest: (id: string) => void;
+  setBudget: (minor: number) => void;
+  setCurrency: (code: string) => void;
+  resetData: () => Promise<void>;
 }
 
 export const useStore = create<AppState>((set, get) => {
   const persist = () => {
     const s = get();
-    savePersisted({ transactions: s.transactions, coins: s.player.coins, quests: s.quests });
+    savePersisted({
+      transactions: s.transactions,
+      coins: s.player.coins,
+      quests: s.quests,
+      budgetMinor: s.budgetMinor,
+      currency: s.currency,
+    });
   };
 
   return {
@@ -60,6 +69,8 @@ export const useStore = create<AppState>((set, get) => {
           transactions: saved.transactions,
           player: { ...s.player, coins: saved.coins ?? s.player.coins },
           quests: saved.quests?.length ? saved.quests : s.quests,
+          budgetMinor: saved.budgetMinor ?? s.budgetMinor,
+          currency: saved.currency ?? s.currency,
           hydrated: true,
         }));
       } else {
@@ -95,6 +106,35 @@ export const useStore = create<AppState>((set, get) => {
         return { quests, player: { ...state.player, coins: state.player.coins + delta } };
       });
       persist();
+    },
+
+    setBudget: (minor) => {
+      set({ budgetMinor: Math.max(0, Math.round(minor)) });
+      persist();
+    },
+
+    setCurrency: (code) => {
+      set({ currency: code });
+      persist();
+    },
+
+    resetData: async () => {
+      await clearPersisted();
+      const txns = seedTransactions();
+      set({
+        transactions: txns,
+        budgetMinor: 5000000,
+        currency: 'INR',
+        player: { ...DEFAULT_PLAYER },
+        quests: DEFAULT_QUESTS.map((q) => ({ ...q })),
+      });
+      await savePersisted({
+        transactions: txns,
+        coins: DEFAULT_PLAYER.coins,
+        quests: DEFAULT_QUESTS,
+        budgetMinor: 5000000,
+        currency: 'INR',
+      });
     },
   };
 });
