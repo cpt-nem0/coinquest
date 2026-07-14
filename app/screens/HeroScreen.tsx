@@ -23,8 +23,8 @@ function StatTile({ label, value, color, bottom }: { label: string; value: strin
 function BadgeTile({ icon, name, earned }: { icon: any; name: string; earned: boolean }) {
   return (
     <View style={{ alignItems: 'center', width: '30%', gap: 5 }}>
-      <View style={{ width: 66, height: 66, borderWidth: 3, borderColor: colors.ink, backgroundColor: earned ? colors.surfaceLow : colors.surface, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-        <Image source={icon} style={{ width: 60, height: 60, opacity: earned ? 1 : 0.22 }} resizeMode="cover" />
+      <View style={{ width: 66, height: 66, borderWidth: 3, borderColor: colors.ink, backgroundColor: earned ? colors.surfaceLow : colors.surface, alignItems: 'center', justifyContent: 'center', overflow: 'hidden', padding: 5 }}>
+        <Image source={icon} style={{ width: '100%', height: '100%', opacity: earned ? 1 : 0.22 }} resizeMode="contain" />
         {!earned && (
           <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>
             <Ionicons name="lock-closed" size={20} color={colors.inkSoft} />
