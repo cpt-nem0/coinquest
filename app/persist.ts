@@ -4,13 +4,14 @@
  * data volume / query needs grow (with the dev build).
  */
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Transaction } from './domain/types';
+import { Transaction, Quest } from './domain/types';
 
 const KEY = 'coinquest:v1';
 
 export interface Persisted {
   transactions: Transaction[];
   coins: number;
+  quests?: Quest[];
 }
 
 export async function loadPersisted(): Promise<Persisted | null> {

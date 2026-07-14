@@ -6,6 +6,14 @@ export type TxnStatus = 'confirmed' | 'needs_review';
 /** The gamified "worth it?" reflection on a spend. */
 export type WorthRating = 'worth' | 'meh' | 'regret';
 
+/** A daily restraint/planning quest (completing it awards coins). */
+export interface Quest {
+  id: string;
+  title: string;
+  reward: number; // coins
+  done: boolean;
+}
+
 /** A raw captured message from any source, before parsing. */
 export interface RawMessage {
   id: string;
