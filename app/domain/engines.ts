@@ -80,6 +80,42 @@ export function computeBosses(txns: Transaction[]): Boss[] {
   return bosses.sort((a, b) => b.spentMinor - a.spentMinor);
 }
 
+export interface BossDetail extends Boss {
+  /** chronological monthly totals for this category (up to `months` most recent). */
+  history: { mk: string; label: string; total: number; isCurrent: boolean }[];
+  /** this month's transactions in this category, newest first. */
+  monthTxns: Transaction[];
+  /** spent − median (positive = over your usual). */
+  deltaMinor: number;
+}
+
+/** Full detail for one boss/category: trend history + this month's transactions. */
+export function bossDetail(txns: Transaction[], categoryId: string, months = 6): BossDetail | null {
+  const boss = computeBosses(txns).find((b) => b.categoryId === categoryId);
+  if (!boss) return null;
+  const cur = currentMonthKey(txns);
+
+  const perMonth = categoryMonthlyTotals(txns)[categoryId] ?? {};
+  const history = Object.keys(perMonth)
+    .sort()
+    .slice(-months)
+    .map((mk) => {
+      const [y, m] = mk.split('-').map(Number);
+      return {
+        mk,
+        label: new Date(y, m, 1).toLocaleDateString('en-IN', { month: 'short' }).toUpperCase(),
+        total: perMonth[mk],
+        isCurrent: mk === cur,
+      };
+    });
+
+  const monthTxns = txns
+    .filter((t) => t.categoryId === categoryId && isSpend(t) && monthKey(t.ts) === cur)
+    .sort((a, b) => b.ts - a.ts);
+
+  return { ...boss, history, monthTxns, deltaMinor: boss.spentMinor - boss.medianMinor };
+}
+
 /** Transparent 0–100 Money Health: budget adherence (60%) + savings rate (40%). */
 export function moneyHealth(txns: Transaction[], budgetMinor: number): number {
   const cur = currentMonthKey(txns);

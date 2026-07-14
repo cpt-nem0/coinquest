@@ -1,11 +1,13 @@
-import React from 'react';
-import { View, Text, ScrollView, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, ScrollView, Image, Pressable } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { colors, fonts, space } from '../theme';
 import NeoBox from '../components/NeoBox';
 import MoneyText from '../components/MoneyText';
 import { useStore } from '../store';
 import { computeBosses, Boss } from '../domain/engines';
 import { bossIcon } from '../domain/bossIcons';
+import BossDetailScreen from './BossDetailScreen';
 
 function HpBar({ ratio, color }: { ratio: number; color: string }) {
   const N = 16;
@@ -22,12 +24,13 @@ function HpBar({ ratio, color }: { ratio: number; color: string }) {
   );
 }
 
-function BossCard({ b }: { b: Boss }) {
+function BossCard({ b, onPress }: { b: Boss; onPress: () => void }) {
   const winning = b.state === 'winning';
   const c = winning ? colors.gain : colors.amber;
   const stateLabel = winning ? 'WINNING' : b.state === 'scouting' ? 'SCOUTING' : 'BOSS AHEAD';
   const ratio = b.medianMinor > 0 ? b.spentMinor / b.medianMinor : 1;
   return (
+    <Pressable onPress={onPress}>
     <NeoBox bg={colors.white} style={{ alignSelf: 'stretch' }} contentStyle={{ padding: space.md, gap: space.md }}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14, flex: 1, minWidth: 0 }}>
@@ -52,7 +55,12 @@ function BossCard({ b }: { b: Boss }) {
         <Text style={{ fontFamily: fonts.label, fontSize: 12, fontWeight: '700', color: colors.ink, marginRight: 10 }}>HP</Text>
         <HpBar ratio={ratio} color={c} />
       </View>
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', gap: 4 }}>
+        <Text style={{ fontFamily: fonts.label, fontSize: 10, letterSpacing: 0.5, textTransform: 'uppercase', color: colors.inkSoft }}>View details</Text>
+        <Ionicons name="chevron-forward" size={13} color={colors.inkSoft} />
+      </View>
     </NeoBox>
+    </Pressable>
   );
 }
 
@@ -60,6 +68,11 @@ export default function BattlesScreen() {
   const txns = useStore((s) => s.transactions);
   const bosses = computeBosses(txns);
   const beaten = bosses.filter((b) => b.state === 'winning').length;
+  const [selected, setSelected] = useState<string | null>(null);
+
+  if (selected) {
+    return <BossDetailScreen categoryId={selected} onClose={() => setSelected(null)} />;
+  }
 
   return (
     <ScrollView contentContainerStyle={{ padding: space.md, paddingBottom: 48, gap: space.lg }}>
@@ -74,7 +87,7 @@ export default function BattlesScreen() {
       </View>
 
       {bosses.map((b) => (
-        <BossCard key={b.categoryId} b={b} />
+        <BossCard key={b.categoryId} b={b} onPress={() => setSelected(b.categoryId)} />
       ))}
 
       <NeoBox bg={colors.surfaceLow} offset={2} style={{ alignSelf: 'stretch' }} contentStyle={{ padding: space.md }}>
