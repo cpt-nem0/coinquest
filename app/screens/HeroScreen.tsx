@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, fonts, space } from '../theme';
 import NeoBox from '../components/NeoBox';
 import PixelCoin from '../components/PixelCoin';
 import { useStore } from '../store';
 import { computeBosses, moneyHealth, healthColor } from '../domain/engines';
+import { ACHIEVEMENTS, buildAchievementCtx } from '../domain/achievements';
 
 function StatTile({ label, value, color, bottom }: { label: string; value: string; color: string; bottom: React.ReactNode }) {
   return (
@@ -19,24 +20,39 @@ function StatTile({ label, value, color, bottom }: { label: string; value: strin
   );
 }
 
-const BADGES = [
-  { icon: '🏆', label: 'No-Spend Week', earned: true },
-  { icon: '💰', label: 'First Save', earned: true },
-  { icon: '⚔️', label: 'Boss Slayer', earned: true },
-  { icon: '📊', label: 'Budget Master', earned: false },
-  { icon: '🔥', label: 'Level 10', earned: true },
-  { icon: '👑', label: 'Level 20', earned: false },
-];
+function BadgeTile({ icon, name, earned }: { icon: any; name: string; earned: boolean }) {
+  return (
+    <View style={{ alignItems: 'center', width: '30%', gap: 5 }}>
+      <View style={{ width: 66, height: 66, borderWidth: 3, borderColor: colors.ink, backgroundColor: earned ? colors.surfaceLow : colors.surface, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+        <Image source={icon} style={{ width: 60, height: 60, opacity: earned ? 1 : 0.22 }} resizeMode="cover" />
+        {!earned && (
+          <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>
+            <Ionicons name="lock-closed" size={20} color={colors.inkSoft} />
+          </View>
+        )}
+      </View>
+      <Text numberOfLines={1} style={{ fontFamily: fonts.label, fontSize: 9, letterSpacing: 0.3, textTransform: 'uppercase', color: earned ? colors.ink : colors.inkSoft, textAlign: 'center' }}>{name}</Text>
+    </View>
+  );
+}
 
 export default function HeroScreen() {
   const txns = useStore((s) => s.transactions);
   const budget = useStore((s) => s.budgetMinor);
   const player = useStore((s) => s.player);
+  const quests = useStore((s) => s.quests);
   const bosses = computeBosses(txns);
   const beaten = bosses.filter((b) => b.state === 'winning').length;
   const health = moneyHealth(txns, budget);
   const hColor = healthColor(health, colors);
   const xpRatio = Math.min(1, player.xp / player.xpNext);
+
+  const ctx = buildAchievementCtx({
+    txns, budgetMinor: budget, level: player.level, streak: player.streak, coins: player.coins,
+    bossesBeaten: beaten, bossesTotal: bosses.length, health, quests,
+  });
+  const badges = ACHIEVEMENTS.map((a) => ({ ...a, earned: a.unlocked(ctx) }));
+  const earnedCount = badges.filter((b) => b.earned).length;
 
   return (
     <ScrollView contentContainerStyle={{ padding: space.md, paddingBottom: 48, gap: space.lg }}>
@@ -83,15 +99,15 @@ export default function HeroScreen() {
 
       {/* badges */}
       <NeoBox bg={colors.white} style={{ alignSelf: 'stretch' }} contentStyle={{ padding: space.md, gap: space.md }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: colors.ink }}>BADGES</Text>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 16 }}>
-          {BADGES.map((b) => (
-            <View key={b.label} style={{ alignItems: 'center', width: '30%', gap: 5, opacity: b.earned ? 1 : 0.45 }}>
-              <View style={{ width: 56, height: 56, borderWidth: 3, borderColor: colors.ink, backgroundColor: b.earned ? colors.surfaceLow : colors.surface, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: 26 }}>{b.earned ? b.icon : '🔒'}</Text>
-              </View>
-              <Text numberOfLines={1} style={{ fontFamily: fonts.label, fontSize: 9, letterSpacing: 0.3, textTransform: 'uppercase', color: colors.inkSoft, textAlign: 'center' }}>{b.label}</Text>
-            </View>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: colors.ink }}>ACHIEVEMENTS</Text>
+          <View style={{ backgroundColor: colors.ink, paddingHorizontal: 8, paddingVertical: 3 }}>
+            <Text style={{ fontFamily: fonts.money, fontSize: 12, color: colors.reward }}>{earnedCount} / {badges.length}</Text>
+          </View>
+        </View>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 18 }}>
+          {badges.map((b) => (
+            <BadgeTile key={b.id} icon={b.icon} name={b.name} earned={b.earned} />
           ))}
         </View>
       </NeoBox>
