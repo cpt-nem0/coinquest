@@ -78,10 +78,7 @@ export default function SettingsScreen({ onClose }: { onClose: () => void }) {
     <View style={{ flex: 1, backgroundColor: colors.paper }}>
       {/* header */}
       <View style={{ backgroundColor: colors.ink, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: space.md, paddingTop: insets.top + 14, paddingBottom: 16 }}>
-        <Pressable onPress={onClose} hitSlop={10} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-          <Ionicons name="chevron-back" size={22} color={colors.white} />
-          <Text style={{ fontFamily: fonts.display, fontSize: 22, letterSpacing: 1, color: colors.white }}>SETTINGS</Text>
-        </Pressable>
+        <Text style={{ fontFamily: fonts.display, fontSize: 22, letterSpacing: 1, color: colors.white }}>SETTINGS</Text>
         <Pressable onPress={onClose} hitSlop={10}>
           <View style={{ width: 34, height: 34, borderWidth: 3, borderColor: colors.white, alignItems: 'center', justifyContent: 'center' }}>
             <Ionicons name="close" size={20} color={colors.white} />
