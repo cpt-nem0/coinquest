@@ -11,7 +11,7 @@ import { Transaction } from '../domain/types';
 const CAT_COLOR: Record<string, string> = {
   food: colors.reward, shopping: colors.amber, transport: colors.brand, groceries: colors.gain,
   bills: colors.inkSoft, rent: colors.inkSoft, entertainment: colors.brand, health: colors.loss,
-  income: colors.gain, other: colors.inkSoft,
+  income: colors.gain, other: colors.inkSoft, cosmetics: colors.brand,
 };
 const catColor = (id: string) => CAT_COLOR[id] ?? colors.inkSoft;
 

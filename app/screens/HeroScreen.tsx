@@ -84,13 +84,13 @@ export default function HeroScreen() {
       {/* badges */}
       <NeoBox bg={colors.white} style={{ alignSelf: 'stretch' }} contentStyle={{ padding: space.md, gap: space.md }}>
         <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: colors.ink }}>BADGES</Text>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.md }}>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 16 }}>
           {BADGES.map((b) => (
-            <View key={b.label} style={{ alignItems: 'center', width: 84, gap: 4, opacity: b.earned ? 1 : 0.4 }}>
+            <View key={b.label} style={{ alignItems: 'center', width: '30%', gap: 5, opacity: b.earned ? 1 : 0.45 }}>
               <View style={{ width: 56, height: 56, borderWidth: 3, borderColor: colors.ink, backgroundColor: b.earned ? colors.surfaceLow : colors.surface, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: 26, ...(b.earned ? {} : { opacity: 0.5 }) }}>{b.earned ? b.icon : '🔒'}</Text>
+                <Text style={{ fontSize: 26 }}>{b.earned ? b.icon : '🔒'}</Text>
               </View>
-              <Text numberOfLines={1} style={{ fontFamily: fonts.label, fontSize: 9, letterSpacing: 0.3, textTransform: 'uppercase', color: colors.inkSoft }}>{b.label}</Text>
+              <Text numberOfLines={1} style={{ fontFamily: fonts.label, fontSize: 9, letterSpacing: 0.3, textTransform: 'uppercase', color: colors.inkSoft, textAlign: 'center' }}>{b.label}</Text>
             </View>
           ))}
         </View>

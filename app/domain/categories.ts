@@ -16,6 +16,7 @@ export const CATEGORIES: Category[] = [
   { id: 'rent', name: 'Rent', flavor: 'Stronghold', isFixedBill: true },
   { id: 'entertainment', name: 'Entertainment', flavor: 'Revelry' },
   { id: 'health', name: 'Health', flavor: 'Potions' },
+  { id: 'cosmetics', name: 'Cosmetics', flavor: 'Glamour' },
   { id: 'income', name: 'Income', flavor: 'Bounty' },
   { id: 'other', name: 'Other', flavor: 'Misc' },
 ];

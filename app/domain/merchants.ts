@@ -40,6 +40,9 @@ export const MERCHANT_SEEDS: MerchantSeed[] = [
   { match: ['pvr', 'inox'], name: 'PVR INOX', categoryId: 'entertainment' },
   { match: ['apollo', 'pharmeasy', '1mg', 'netmeds'], name: 'Pharmacy', categoryId: 'health' },
   { match: ['cult.fit', 'cultfit', 'curefit'], name: 'Cult.fit', categoryId: 'health' },
+  { match: ['nykaa'], name: 'Nykaa', categoryId: 'cosmetics' },
+  { match: ['sephora'], name: 'Sephora', categoryId: 'cosmetics' },
+  { match: ['mac cosmetics', 'the body shop', 'forest essentials', 'mamaearth'], name: 'Beauty Store', categoryId: 'cosmetics' },
   { match: ['rent', 'landlord'], name: 'Rent', categoryId: 'rent' },
   { match: ['salary', 'sal cr', 'payroll', 'neft cr'], name: 'Salary', categoryId: 'income' },
 ];

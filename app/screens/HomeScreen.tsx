@@ -10,7 +10,7 @@ import { homeSummary, healthColor } from '../domain/engines';
 import { TabKey } from '../components/TabBar';
 
 const BOSS_EMOJI: Record<string, string> = {
-  food: '🍔', shopping: '🛍️', transport: '🚕', groceries: '🛒', entertainment: '🎬', health: '💊',
+  food: '🍔', shopping: '🛍️', transport: '🚕', groceries: '🛒', entertainment: '🎬', health: '💊', cosmetics: '💄',
 };
 
 function H3({ children, color }: { children: React.ReactNode; color?: string }) {

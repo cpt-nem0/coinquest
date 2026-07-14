@@ -20,6 +20,7 @@ const ENTRIES: Entry[] = [
   ['BigBasket', 1200, '2026-05-18', 'd'],
   ['Netflix', 649, '2026-05-20', 'd'],
   ['Apollo Pharmacy', 500, '2026-05-22', 'd'],
+  ['Nykaa', 900, '2026-05-15', 'd'],
   ['Jio Prepaid', 399, '2026-05-08', 'd'],
   // ---- June 2026 ----
   ['Salary', 52000, '2026-06-01', 'c'],
@@ -31,6 +32,7 @@ const ENTRIES: Entry[] = [
   ['BigBasket', 1180, '2026-06-24', 'd'],
   ['BookMyShow', 560, '2026-06-20', 'd'],
   ['Apollo Pharmacy', 780, '2026-06-18', 'd'],
+  ['Nykaa', 1100, '2026-06-14', 'd'],
   ['Jio Prepaid', 399, '2026-06-08', 'd'],
   // ---- July 2026 (current) ----
   ['Salary', 52000, '2026-07-01', 'c'],
@@ -46,6 +48,7 @@ const ENTRIES: Entry[] = [
   ['Zepto', 420, '2026-07-10', 'd'],
   ['Netflix', 649, '2026-07-20', 'd'],
   ['Apollo Pharmacy', 780, '2026-07-05', 'd'],
+  ['Nykaa', 1250, '2026-07-09', 'd'],
   ['Jio Prepaid', 399, '2026-07-08', 'd'],
   ['Electricity', 1620, '2026-07-03', 'd'],
   // unknown merchants → parser flags needs_review → surface in the Encounter

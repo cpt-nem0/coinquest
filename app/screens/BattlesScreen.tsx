@@ -7,18 +7,18 @@ import { useStore } from '../store';
 import { computeBosses, Boss } from '../domain/engines';
 
 const BOSS_EMOJI: Record<string, string> = {
-  food: '🍔', shopping: '🛍️', transport: '🚕', groceries: '🛒', entertainment: '🎬', health: '💊',
+  food: '🍔', shopping: '🛍️', transport: '🚕', groceries: '🛒', entertainment: '🎬', health: '💊', cosmetics: '💄',
 };
 
 function HpBar({ ratio, color }: { ratio: number; color: string }) {
-  const N = 12;
+  const N = 16;
   const filled = Math.max(1, Math.round(Math.min(1, ratio) * N));
   return (
-    <View style={{ flexDirection: 'row', flexWrap: 'wrap', flex: 1 }}>
+    <View style={{ flexDirection: 'row', flex: 1, gap: 2 }}>
       {Array.from({ length: N }).map((_, i) => (
         <View
           key={i}
-          style={{ width: 9, height: 16, marginRight: 2, marginBottom: 2, borderWidth: 1, borderColor: colors.ink, backgroundColor: i < filled ? color : colors.track }}
+          style={{ flex: 1, height: 16, borderWidth: 1, borderColor: colors.ink, backgroundColor: i < filled ? color : colors.track }}
         />
       ))}
     </View>
