@@ -30,6 +30,8 @@ interface AppState {
   hydrate: () => Promise<void>;
   /** Confirm a reviewed spend: set category + worth, mark confirmed, award coins. Persists. */
   reviewTransaction: (id: string, categoryId: string, worth: WorthRating) => void;
+  /** Add a manually-logged transaction (no coin reward — logging isn't a rewarded behavior). Persists. */
+  addTransaction: (t: Transaction) => void;
 }
 
 export const useStore = create<AppState>((set, get) => ({
@@ -66,5 +68,12 @@ export const useStore = create<AppState>((set, get) => ({
     savePersisted({ transactions, coins: player.coins }).then(() =>
       console.log('[coinquest] persisted; coins =', player.coins)
     );
+  },
+
+  addTransaction: (t) => {
+    const transactions = [t, ...get().transactions].sort((a, b) => b.ts - a.ts);
+    const coins = get().player.coins;
+    set({ transactions });
+    savePersisted({ transactions, coins });
   },
 }));

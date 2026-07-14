@@ -18,7 +18,7 @@ import HomeScreen from './screens/HomeScreen';
 import LedgerScreen from './screens/LedgerScreen';
 import BattlesScreen from './screens/BattlesScreen';
 import HeroScreen from './screens/HeroScreen';
-import EncounterScreen from './screens/EncounterScreen';
+import AddScreen from './screens/AddScreen';
 import { useStore } from './store';
 
 export default function App() {
@@ -64,7 +64,7 @@ export default function App() {
           {tab === 'ledger' && <LedgerScreen />}
           {tab === 'battles' && <BattlesScreen />}
           {tab === 'hero' && <HeroScreen />}
-          {tab === 'add' && <EncounterScreen />}
+          {tab === 'add' && <AddScreen />}
         </View>
 
         <TabBar active={tab} onChange={setTab} />
